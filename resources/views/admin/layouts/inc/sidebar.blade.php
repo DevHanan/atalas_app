@@ -39,6 +39,17 @@
                       الفئات 
   
          </span> </a></li>
+         <li class="{{ Request::is('admin/companies*') ? 'active' : '' }}"><a href="{{ url('admin/companies') }}" class="">  
+         <span class="pcoded-mtext"> 
+                      الشركات 
+  
+         </span> </a></li>
+
+         <li class="{{ Request::is('admin/products*') ? 'active' : '' }}"><a href="{{ url('admin/products') }}" class="">  
+         <span class="pcoded-mtext"> 
+                      المنتجات 
+  
+         </span> </a></li>
 
             </ul>
         </li>

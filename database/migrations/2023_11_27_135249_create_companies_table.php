@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
+            $table->integer('category_id')->unsigned();
+            $table->integer('section_id')->unsigned();
+            $table->string('name');
+            $table->boolean('status')->default('1');
             $table->timestamps();
         });
     }

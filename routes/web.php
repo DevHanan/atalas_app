@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ProvinceController;
 use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +50,9 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->prefix('admin')->group(f
 
     Route::resource('province',ProvinceController::class);
     Route::resource('district',DistrictController::class);
+
+    Route::resource('companies',CompanyController::class);
+    Route::resource('products',ProductController::class);
 
 });
 

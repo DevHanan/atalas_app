@@ -7,8 +7,6 @@ use App\Models\Section;
 use App\Models\Category;
 
 use Illuminate\Http\Request;
-use App\Models\Exhibition;
-use App\Models\ExhibitionCategory;
 class CategoryController extends Controller
 {
 
