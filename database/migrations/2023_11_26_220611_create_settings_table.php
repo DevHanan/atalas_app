@@ -21,6 +21,9 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->text('copyright_text')->nullable();
             $table->boolean('status')->default('1');
+            $table->string('facebook_url')->nullable();
+            $table->string('twitter_url')->nullable();
+            $table->text('instgram_url')->nullable();
             $table->timestamps();
         });
     }

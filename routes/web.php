@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->prefix('admin')->group(f
 
     Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
     Route::resource('pages',PageController::class);
+    Route::resource('sections',SectionController::class);
     Route::resource('categories',CategoryController::class);
     Route::resource('sliders',SliderController::class);
 

@@ -9,15 +9,15 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Exhibition;
 use App\Models\ExhibitionCategory;
-class CategoryController extends Controller
+class SectionController extends Controller
 {
 
     public function __construct()
     {
-        // $this->middleware('permission:categories-create', ['only' => ['create','store']]);
-        // $this->middleware('permission:categories-read',   ['only' => ['show', 'index']]);
-        // $this->middleware('permission:categories-update',   ['only' => ['edit','update']]);
-        // $this->middleware('permission:categories-delete',   ['only' => ['delete']]);
+        // $this->middleware('permission:sections-create', ['only' => ['create','store']]);
+        // $this->middleware('permission:sections-read',   ['only' => ['show', 'index']]);
+        // $this->middleware('permission:sections-update',   ['only' => ['edit','update']]);
+        // $this->middleware('permission:sections-delete',   ['only' => ['delete']]);
     }
     /**
      * Display a listing of the resource.
@@ -26,15 +26,15 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $title = trans('backend.list_categories');
-        $categories =  Category::where(function($q)use($request){
+        $title = trans('backend.list_sections');
+        $sections =  Section::where(function($q)use($request){
             if($request->id!=null)
                 $q->where('id',$request->id);
             if($request->q!=null)
                 $q->where('title','LIKE','%'.$request->q.'%');
         })->orderBy('id','DESC')->paginate();
 
-        return view('admin.categories.index',compact('categories','title'));
+        return view('admin.sections.index',compact('sections','title'));
     }
 
     /**
@@ -44,9 +44,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $title = trans('backend.add_categories');
-        $categories = Section::all();
-        return view('admin.categories.create',compact('title','categories'));
+        $title = trans('backend.add_sections');
+        return view('admin.sections.create',compact('title','sections'));
     }
 
     /**
@@ -62,10 +61,10 @@ class CategoryController extends Controller
         ]);
 
         $request->validate([
-            'slug'=>"required|max:190|unique:categories,slug",
+            'slug'=>"required|max:190|unique:sections,slug",
             'title'=>"required|max:190"
             ]);
-        $category = Category::create([
+        $category = Section::create([
             "slug"=>$request->slug,
             "title"=>$request->title,
             "parent_id"=>$request->parent_id,
@@ -74,14 +73,14 @@ class CategoryController extends Controller
               
             $thumbnail = $request->image;
            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-                   $thumbnail->move(public_path('/uploads/categories/'),$filename);
-            $category->image ='public/uploads/categories/'.$filename;
+                   $thumbnail->move(public_path('/uploads/sections/'),$filename);
+            $category->image ='public/uploads/sections/'.$filename;
             $category->save();
          
         }
         
         toastr()->success(__('utils/toastr.category_store_success_message'), __('utils/toastr.successful_process_message'));
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.sections.index');
     }
 
     /**
@@ -92,7 +91,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        if(!auth()->user()->isAbleTo('categories-read'))abort(403);
+        if(!auth()->user()->isAbleTo('sections-read'))abort(403);
     }
 
     /**
@@ -103,10 +102,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {   
-        $category = Category::find($id);
-        $categories = Section::all();
-        $title = trans('backend.edit_categories');
-        return view('admin.categories.edit',compact('category','title','categories'));
+        $category = Section::find($id);
+        $sections = Section::all();
+        $title = trans('backend.edit_sections');
+        return view('admin.sections.edit',compact('category','title','sections'));
     }
 
     /**
@@ -123,7 +122,7 @@ class CategoryController extends Controller
         ]);
 
         $request->validate([
-            'slug'=>"required|max:190|unique:categories,slug,".$category->id,
+            'slug'=>"required|max:190|unique:sections,slug,".$category->id,
             'title'=>"required|max:190",
         ]);
         $category->update([
@@ -135,13 +134,13 @@ class CategoryController extends Controller
               
             $thumbnail = $request->image;
            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-                   $thumbnail->move(public_path('/uploads/categories/'),$filename);
-            $category->image ='public/uploads/categories/'.$filename;
+                   $thumbnail->move(public_path('/uploads/sections/'),$filename);
+            $category->image ='public/uploads/sections/'.$filename;
             $category->save();
          
         }
         toastr()->success(__('utils/toastr.category_update_success_message'), __('utils/toastr.successful_process_message'));
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.sections.index');
     }
 
     /**
@@ -152,9 +151,9 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request)
     {
-        $category = Category::find($request->id);
+        $category = Section::find($request->id);
         $category->delete();
         toastr()->success(__('utils/toastr.category_destroy_success_message'), __('utils/toastr.successful_process_message'));
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.sections.index');
     }
 }

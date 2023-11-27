@@ -59,18 +59,10 @@ class SettingController extends Controller
         // Field Validation
         $request->validate([
             'title' => 'required',
-            'meta_title' => 'required',
             'logo' => 'nullable|image',
             'favicon' => 'nullable|image',
             'phone' => 'nullable',
-            'email' => 'nullable|email',
-            'date_format' => 'required',
-            'time_format' => 'required',
-            'time_zone' => 'required',
-            // 'week_start' => 'required',
-            'currency' => 'required',
-            'currency_symbol' => 'required',
-            'decimal_place' => 'required|numeric',
+            'email' => 'nullable|email'
         ]);
 
         $id = $request->id;
@@ -165,65 +157,24 @@ class SettingController extends Controller
 
 
         // -1 means no data row found
-        if($id == -1){
+        if($id == -1)
             // Insert Data
             $data = new Setting;
+        else 
+        $data = Setting::find($id);
+
             $data->title = $request->title;
-            $data->academy_code = $request->academy_code;
-            $data->meta_title = $request->meta_title;
-            $data->meta_description = $request->meta_description;
-            $data->meta_keywords = $request->meta_keywords;
             $data->logo_path = $logoNameToStore;
             $data->favicon_path = $faviconNameToStore;
             $data->phone = $request->phone;
             $data->email = $request->email;
-            $data->fax = $request->fax;
             $data->address = $request->address;
-            $data->language = $request->language;
-            $data->date_format = $request->date_format;
-            $data->time_format = $request->time_format;
-            $data->week_start = $request->week_start;
-            $data->time_zone = $request->time_zone;
-            $data->currency = $request->currency;
-            $data->currency_symbol = $request->currency_symbol;
-            $data->decimal_place = $request->decimal_place;
             $data->copyright_text = $request->copyright_text;
-            $data->short_description = $request->short_description;
             $data->facebook_url = $request->facebook_url;
             $data->twitter_url = $request->twitter_url ;
             $data->instgram_url = $request->instgram_url ;
             $data->save();
-        }
-        else{
-            // Update Data
-            $data = Setting::find($id);
-            $data->title = $request->title;
-            $data->academy_code = $request->academy_code;
-            $data->meta_title = $request->meta_title;
-            $data->meta_description = $request->meta_description;
-            $data->meta_keywords = $request->meta_keywords;
-            $data->logo_path = $logoNameToStore;
-            $data->favicon_path = $faviconNameToStore;
-            $data->phone = $request->phone;
-            $data->email = $request->email;
-            $data->fax = $request->fax;
-            $data->address = $request->address;
-            $data->language = $request->language;
-            $data->date_format = $request->date_format;
-            $data->time_format = $request->time_format;
-            $data->week_start = $request->week_start;
-            $data->time_zone = $request->time_zone;
-            $data->currency = $request->currency;
-            $data->currency_symbol = $request->currency_symbol;
-            $data->decimal_place = $request->decimal_place;
-            $data->copyright_text = $request->copyright_text;
-             $data->short_description = $request->short_description;
-         
-            $data->facebook_url = $request->facebook_url;
-            $data->twitter_url = $request->twitter_url ;
-            $data->instgram_url = $request->instgram_url ;
-            $data->save();
-        }
+        
 
 
         Toastr::success(__('msg_updated_successfully'), __('msg_success'));

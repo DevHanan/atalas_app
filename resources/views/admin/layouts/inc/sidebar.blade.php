@@ -20,7 +20,7 @@
                 <span class="pcoded-mtext"> الصفحات   </span>
                                     </a></li>
 
-                                    <li class="nav-item pcoded-hasmenu {{ Request::is('admin/job-request*') ? 'active' : '' }}">
+                                    <li class="nav-item pcoded-hasmenu {{ Request::is('admin/sections*') ? 'active' : '' }}">
             <a href="#!" class="nav-link">
                 <span class="pcoded-micon"><i class="fas fa-users-cog"></i></span>
                 <span class="pcoded-mtext">إدارة  المخزون </span>
@@ -28,11 +28,15 @@
             <ul class="pcoded-submenu">
                 
                
-          
+            <li class="{{ Request::is('admin/sections*') ? 'active' : '' }}"><a href="{{ url('admin/sections') }}" class="">  
+         <span class="pcoded-mtext"> 
+                      الأقسام 
+  
+         </span> </a></li>
          
          <li class="{{ Request::is('admin/categories*') ? 'active' : '' }}"><a href="{{ url('admin/categories') }}" class="">  
          <span class="pcoded-mtext"> 
-                      التصنيفات 
+                      الفئات 
   
          </span> </a></li>
 
