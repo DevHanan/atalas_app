@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'عرض الأقسام')
+@section('title', 'عرض الفئات')
 @section('content')
 
 <div class="main-body">
@@ -9,7 +9,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>عرض الأقسام</h5>
+                        <h5>عرض الفئات</h5>
                     </div>
                     <div class="card-block">
                         <a href="{{route('admin.categories.create')}}" class="btn btn-rounded btn-primary">{{ __('btn_add_new') }}</a>
@@ -23,7 +23,7 @@
                                 <thead>
                                     <tr>
                                                     	<th>#</th>
-            						<th>إسم</th>
+            						<th>الفئة</th>
             						          	<th> القسم</th>
             						<th>{{ __('field_photo') }}</th>
             						<th>{{ __('control') }}</th>
@@ -34,7 +34,7 @@
 					<tr >
 						<td class="ui-state-default drag-handler" data-faq="{{$category->id}}">{{$category->id}}</td>
 						<td>{{$category->title}}</td>
-						<td> {{ optional($category->parent)->title }} </td>
+						<td> {{ optional($category->section)->title }} </td>
 <td><img src="{{asset($category->image)}}" style="width:40px"></td>					
 						<td style="width: 270px;">
 

@@ -9,4 +9,9 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'slug','section_id'];
+
+    public function section()
+     {
+        return $this->belongsTo(Section::class);    
+    }
 }

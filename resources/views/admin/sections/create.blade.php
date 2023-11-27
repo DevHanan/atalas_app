@@ -14,12 +14,12 @@
                         <h5> إضافة قسم  </h5>
                     </div>
                     <div class="card-block">
-                        <a href="{{ route('admin.categories.index') }}" class="btn btn-rounded btn-primary">{{ __('btn_back') }}</a>
+                        <a href="{{ route('admin.sections.index') }}" class="btn btn-rounded btn-primary">{{ __('btn_back') }}</a>
 
-                        <a href="{{ route('admin.categories.create') }}" class="btn btn-rounded btn-info">{{ __('btn_refresh') }}</a>
+                        <a href="{{ route('admin.sections.create') }}" class="btn btn-rounded btn-info">{{ __('btn_refresh') }}</a>
                     </div>
 
-                    <form class="needs-validation" novalidate action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" novalidate action="{{ route('admin.sections.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-block">
                         <!-- Form Start -->
@@ -35,23 +35,9 @@
                             </div>
                         </div>
                         
-                                                <div class="form-group col-md-12">
-                            <label for="category">{{ __('field_category') }} <span>*</span></label>
-                            <select class="form-control" name="parent_id" id="parent_id" >
-                                <option value="">{{ __('select') }}</option>
-                                @foreach( $categories as $category )
-                                <option value="{{ $category->id }}" @if(old('category') == $category->id) selected @endif>{{ $category->title }}</option>
-                                @endforeach
-                            </select>
-
-                            <div class="invalid-feedback">
-                              {{ __('required_field') }} {{ __('field_category') }}
-                            </div>
-                        </div>
 
                         
-                     
-
+                    
                        
 
                            <hr/>

@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Section;
-use App\Models\Category;
-
 use Illuminate\Http\Request;
 use App\Models\Exhibition;
-use App\Models\ExhibitionCategory;
+use App\Models\ExhibitionSection;
 class SectionController extends Controller
 {
 
@@ -45,7 +43,7 @@ class SectionController extends Controller
     public function create()
     {
         $title = trans('backend.add_sections');
-        return view('admin.sections.create',compact('title','sections'));
+        return view('admin.sections.create',compact('title'));
     }
 
     /**
@@ -64,7 +62,7 @@ class SectionController extends Controller
             'slug'=>"required|max:190|unique:sections,slug",
             'title'=>"required|max:190"
             ]);
-        $category = Section::create([
+        $section = Section::create([
             "slug"=>$request->slug,
             "title"=>$request->title,
             "parent_id"=>$request->parent_id,
@@ -74,22 +72,22 @@ class SectionController extends Controller
             $thumbnail = $request->image;
            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
                    $thumbnail->move(public_path('/uploads/sections/'),$filename);
-            $category->image ='public/uploads/sections/'.$filename;
-            $category->save();
+            $section->image ='public/uploads/sections/'.$filename;
+            $section->save();
          
         }
         
-        toastr()->success(__('utils/toastr.category_store_success_message'), __('utils/toastr.successful_process_message'));
+        toastr()->success(__('utils/toastr.section_store_success_message'), __('utils/toastr.successful_process_message'));
         return redirect()->route('admin.sections.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Section $section)
     {
         if(!auth()->user()->isAbleTo('sections-read'))abort(403);
     }
@@ -97,63 +95,61 @@ class SectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {   
-        $category = Section::find($id);
-        $sections = Section::all();
+        $section = Section::find($id);
         $title = trans('backend.edit_sections');
-        return view('admin.sections.edit',compact('category','title','sections'));
+        return view('admin.sections.edit',compact('section','title'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Section $section)
     {
          $request->merge([
             'slug'=> $request->title 
         ]);
 
         $request->validate([
-            'slug'=>"required|max:190|unique:sections,slug,".$category->id,
+            'slug'=>"required|max:190|unique:sections,slug,".$section->id,
             'title'=>"required|max:190",
         ]);
-        $category->update([
+        $section->update([
             "slug"=>$request->slug,
             "title"=>$request->title,
-            "parent_id"=>$request->parent_id
             ]);
           if($request->hasFile('image')){
               
             $thumbnail = $request->image;
            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
                    $thumbnail->move(public_path('/uploads/sections/'),$filename);
-            $category->image ='public/uploads/sections/'.$filename;
-            $category->save();
+            $section->image ='public/uploads/sections/'.$filename;
+            $section->save();
          
         }
-        toastr()->success(__('utils/toastr.category_update_success_message'), __('utils/toastr.successful_process_message'));
+        toastr()->success(__('utils/toastr.section_update_success_message'), __('utils/toastr.successful_process_message'));
         return redirect()->route('admin.sections.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
-        $category = Section::find($request->id);
-        $category->delete();
-        toastr()->success(__('utils/toastr.category_destroy_success_message'), __('utils/toastr.successful_process_message'));
+        $section = Section::find($request->id);
+        $section->delete();
+        toastr()->success(__('utils/toastr.section_destroy_success_message'), __('utils/toastr.successful_process_message'));
         return redirect()->route('admin.sections.index');
     }
 }

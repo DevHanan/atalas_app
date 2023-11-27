@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','إضافة قسم')
+@section('title','إضافة فئة')
 @section('content')
 
 <!-- Start Content-->
@@ -11,7 +11,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5> إضافة قسم  </h5>
+                        <h5> إضافة فئة  </h5>
                     </div>
                     <div class="card-block">
                         <a href="{{ route('admin.categories.index') }}" class="btn btn-rounded btn-primary">{{ __('btn_back') }}</a>
@@ -27,17 +27,17 @@
                       
 
                         <div class="form-group col-md-12">
-                            <label for="title">إسم القسم <span>*</span></label>
+                            <label for="title">إسم الفئة <span>*</span></label>
                             <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" required>
 
                             <div class="invalid-feedback">
-                              {{ __('required_field') }} إسم القسم
+                              {{ __('required_field') }} إسم الفئة
                             </div>
                         </div>
                         
                                                 <div class="form-group col-md-12">
                             <label for="category">{{ __('field_category') }} <span>*</span></label>
-                            <select class="form-control" name="parent_id" id="parent_id" >
+                            <select class="form-control" name="section_id" id="section_id" >
                                 <option value="">{{ __('select') }}</option>
                                 @foreach( $categories as $category )
                                 <option value="{{ $category->id }}" @if(old('category') == $category->id) selected @endif>{{ $category->title }}</option>

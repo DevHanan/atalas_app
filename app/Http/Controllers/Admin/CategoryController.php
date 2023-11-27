@@ -68,7 +68,7 @@ class CategoryController extends Controller
         $category = Category::create([
             "slug"=>$request->slug,
             "title"=>$request->title,
-            "parent_id"=>$request->parent_id,
+            "section_id"=>$request->section_id,
         ]);
           if($request->hasFile('image')){
               
@@ -129,7 +129,7 @@ class CategoryController extends Controller
         $category->update([
             "slug"=>$request->slug,
             "title"=>$request->title,
-            "parent_id"=>$request->parent_id
+            "section_id"=>$request->section_id
             ]);
           if($request->hasFile('image')){
               

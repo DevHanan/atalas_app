@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\Admin\ProvinceController;
+use App\Http\Controllers\Admin\DistrictController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +44,10 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->prefix('admin')->group(f
     Route::get('profile/account', [ProfileController::class,'account'])->name('profile.account');
     Route::post('profile/changemail', [ProfileController::class,'changeMail'])->name('profile.changemail');
     Route::post('profile/changepass', [ProfileController::class,'changePass'])->name('profile.changepass');
+
+
+    Route::resource('province',ProvinceController::class);
+    Route::resource('district',DistrictController::class);
+
 });
 

@@ -37,12 +37,12 @@
                         </div>
                         
                                                 <div class="form-group col-md-12">
-                            <label for="parent_id">{{ __('field_category') }} <span>*</span></label>
-                            <select class="form-control" name="parent_id" id="parent_id" >
+                            <label for="section_id">{{ __('field_category') }} <span>*</span></label>
+                            <select class="form-control" name="section_id" id="section_id" >
                                 <option value="">{{ __('select') }}</option>
                                 @foreach( $categories as $cat )
                                 @if($category->id != $cat->id)
-                                <option value="{{ $cat->id }}" @if( $cat->id == $category->parent_id ) selected @endif>{{ $cat->title }}</option>
+                                <option value="{{ $cat->id }}" @if( $cat->id == $category->section_id ) selected @endif>{{ $cat->title }}</option>
                                 @endif
                                 @endforeach
                             </select>

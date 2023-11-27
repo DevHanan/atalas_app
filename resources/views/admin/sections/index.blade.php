@@ -12,9 +12,9 @@
                         <h5>عرض الأقسام</h5>
                     </div>
                     <div class="card-block">
-                        <a href="{{route('admin.categories.create')}}" class="btn btn-rounded btn-primary">{{ __('btn_add_new') }}</a>
+                        <a href="{{route('admin.sections.create')}}" class="btn btn-rounded btn-primary">{{ __('btn_add_new') }}</a>
 
-                        <a href="{{route('admin.categories.index')}}" class="btn btn-rounded btn-info">{{ __('btn_refresh') }}</a>
+                        <a href="{{route('admin.sections.index')}}" class="btn btn-rounded btn-info">{{ __('btn_refresh') }}</a>
                     </div>
                     <div class="card-block">
                         <!-- [ Data table ] start -->
@@ -24,29 +24,27 @@
                                     <tr>
                                                     	<th>#</th>
             						<th>إسم</th>
-            						          	<th> القسم</th>
             						<th>{{ __('field_photo') }}</th>
             						<th>{{ __('control') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                 @foreach($categories as $category)
+                                 @foreach($sections as $section)
 					<tr >
-						<td class="ui-state-default drag-handler" data-faq="{{$category->id}}">{{$category->id}}</td>
-						<td>{{$category->title}}</td>
-						<td> {{ optional($category->parent)->title }} </td>
-<td><img src="{{asset($category->image)}}" style="width:40px"></td>					
+						<td class="ui-state-default drag-handler" data-faq="{{$section->id}}">{{$section->id}}</td>
+						<td>{{$section->title}}</td>
+<td><img src="{{asset($section->image)}}" style="width:40px"></td>					
 						<td style="width: 270px;">
 
 					 
 
-							<a href="{{url('admin/categories/'.$category->id.'/edit')}}">
+							<a href="{{url('admin/sections/'.$section->id.'/edit')}}">
 								<span class="btn  btn-outline-success btn-sm font-1 mx-1">
 									<span class="fas fa-wrench "></span> {{__('modal_edit')}}
 								</span>
 							</a>
-							<form method="POST" action="{{url('admin/categories/destroy')}}" class="d-inline-block">@csrf @method("DELETE")
-							<input type="hidden" name="id" value="{{$category->id}}">
+							<form method="POST" action="{{url('admin/sections/destroy')}}" class="d-inline-block">@csrf @method("DELETE")
+							<input type="hidden" name="id" value="{{$section->id}}">
 								<button class="btn  btn-outline-danger btn-sm font-1 mx-1" onclick="var result = confirm('هل أنت متأكد من عملية الحذف ؟');if(result){}else{event.preventDefault()}">
 									<span class="fas fa-trash "></span> {{ __('btn_delete') }}
 								</button>

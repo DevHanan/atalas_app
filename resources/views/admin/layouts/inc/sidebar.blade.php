@@ -43,7 +43,14 @@
             </ul>
         </li>
                                     
-                                
+        <li class="{{ Request::is('admn/province*') ? 'active' : '' }}"><a href="{{ route('admin.province.index') }}" class="">
+                    <span class="pcoded-micon"><i class="fa-solid fa-city"></i></span>
+                <span class="pcoded-mtext"> 
+                    المدن </span></a></li>
+
+                <li class="{{ Request::is('admin/district*') ? 'active' : '' }}"><a href="{{ route('admin.district.index') }}" class=""> <span class="pcoded-micon"><i class="fa fa-area-chart" aria-hidden="true"></i>
+</span>
+                <span class="pcoded-mtext"> المناطق</span></a></li>
 
                                     <li class="{{ Request::is('admin/setting') ? 'active' : '' }}"><a href="{{ route('admin.setting.index') }}" class="">
                     <span class="pcoded-micon"><i class="fas fa-user-edit"></i></span>

@@ -14,12 +14,12 @@
                         <h5> {{ 'تعديل قسم' }}</h5>
                     </div>
                     <div class="card-block">
-                        <a href="{{ route('admin.categories.index') }}" class="btn btn-rounded btn-primary">{{ __('btn_back') }}</a>
+                        <a href="{{ route('admin.sections.index') }}" class="btn btn-rounded btn-primary">{{ __('btn_back') }}</a>
 
-                        <a href="{{ route('admin.categories.create') }}" class="btn btn-rounded btn-info">{{ __('btn_refresh') }}</a>
+                        <a href="{{ route('admin.sections.create') }}" class="btn btn-rounded btn-info">{{ __('btn_refresh') }}</a>
                     </div>
 
-                    <form class="needs-validation" novalidate action="{{ route('admin.categories.update',$category) }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" novalidate action="{{ route('admin.sections.update',$category) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
                     <div class="card-block">
@@ -36,21 +36,7 @@
                             </div>
                         </div>
                         
-                                                <div class="form-group col-md-12">
-                            <label for="parent_id">{{ __('field_category') }} <span>*</span></label>
-                            <select class="form-control" name="parent_id" id="parent_id" >
-                                <option value="">{{ __('select') }}</option>
-                                @foreach( $categories as $cat )
-                                @if($category->id != $cat->id)
-                                <option value="{{ $cat->id }}" @if( $cat->id == $category->parent_id ) selected @endif>{{ $cat->title }}</option>
-                                @endif
-                                @endforeach
-                            </select>
-
-                            <div class="invalid-feedback">
-                              {{ __('required_field') }} {{ __('field_category') }}
-                            </div>
-                        </div>
+                                               
 
                        
 
