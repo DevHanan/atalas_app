@@ -38,7 +38,6 @@ use  App\Http\Controllers\Api\OrderController;
 |
 */
 
-Route::middleware('lang')->group(function (){
 
 
 
@@ -103,7 +102,7 @@ Route::middleware('lang')->group(function (){
     });
 
     Route::get('search',[HomeController::class,'search']);
-});
+
 Route::post('password/email',  [ForgotPasswordController::class,'sendCode']);
 Route::post('password/code/check', [ForgotPasswordController::class,'checkCode']);
 Route::post('password/reset', [ForgotPasswordController::class,'resetPassword']);
