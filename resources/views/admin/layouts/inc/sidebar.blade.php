@@ -59,18 +59,18 @@
                     <span class="pcoded-micon"><i class="fa-solid fa-city"></i></span>
                 <span class="pcoded-mtext"> 
                     المستخدمين </span></a></li>
-                    <li class="{{ Request::is('admn/provincee*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.provincee.index') }}" class="">
+                    <li class="{{ Request::is('admn/province*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.province.index') }}" class="">
                     <span class="pcoded-micon"><i class="fa-solid fa-city"></i></span>
                 <span class="pcoded-mtext"> 
                     العملاء </span></a></li>
                     <li class="{{ Request::is('admn/province*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.provincee.index') }}" class="">
+                        <a href="{{ route('admin.province.index') }}" class="">
                     <span class="pcoded-micon"><i class="fa-solid fa-city"></i></span>
                 <span class="pcoded-mtext"> 
                     المندوبين </span></a></li>
                     <li class="{{ Request::is('admn/province*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.provincee.index') }}" class="">
+                        <a href="{{ route('admin.province.index') }}" class="">
                     <span class="pcoded-micon"><i class="fa-solid fa-city"></i></span>
                 <span class="pcoded-mtext"> 
                     الطلبات </span></a></li>

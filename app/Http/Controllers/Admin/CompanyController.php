@@ -56,9 +56,7 @@ class CompanyController extends Controller
        
 
         $request->validate([
-            'name'=>"required|max:190",
-            'section_id'=>'required',
-            'category_id' => 'required'
+            'name'=>"required|max:190"
             ]);
         $company = Company::create($request->all());
           if($request->hasFile('image')){
@@ -113,9 +111,7 @@ class CompanyController extends Controller
         ]);
 
         $request->validate([
-            'name'=>"required|max:190",
-            'section_id' => 'required',
-            'category_id'=> 'required'
+            'name'=>"required|max:190"
         ]);
         $company->update($request->all());
           if($request->hasFile('image')){

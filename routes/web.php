@@ -24,6 +24,9 @@ use App\Http\Controllers\Admin\ProductController;
 |
 */
 
+Route::get('/',function(){
+return redirect('admin/login');
+});
 Route::middleware(['XSS'])->prefix('admin')->group(function () {
     Auth::routes(['register' => false]);
 });

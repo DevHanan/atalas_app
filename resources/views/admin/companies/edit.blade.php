@@ -35,43 +35,7 @@
                               {{ __('required_field') }}  إسم الشركة
                             </div>
                         </div>
-                        
-                                                <div class="form-group col-md-12">
-                            <label for="section_id">{{ __('field_section') }} <span>*</span></label>
-                            <select class="form-control" name="section_id" id="section_id" >
-                                <option value="">{{ __('select') }}</option>
-                                @foreach( $sections as $section )
-                                <option value="{{ $section->id }}" @if( $section->id == $company->section_id ) selected @endif>{{ $section->title }}</option>
-                                @endforeach
-                            </select>
-
-                            <div class="invalid-feedback">
-                              {{ __('required_field') }} {{ __('field_category') }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group col-md-12">
-                            <label for="category_id">{{ __('field_category') }} <span>*</span></label>
-                            <select class="form-control" name="category_id" id="category_id" >
-                                <option value="">{{ __('select') }}</option>
-                                @foreach( $categories as $category )
-                                <option value="{{ $category->id }}" @if( $category->id == $company->category_id ) selected @endif>{{ $category->title }}</option>
-                                @endforeach
-                            </select>
-
-                            <div class="invalid-feedback">
-                              {{ __('required_field') }} {{ __('field_category') }}
-                            </div>
-                        </div>
-
-                       
-
-                       
-
-                           <hr/>
-
-                    
+               
                         
                            <div class="form-group">
                         <label for="status" class="form-label">{{ __('select_status') }}</label>
@@ -80,7 +44,22 @@
                             <option value="0" @if( $company->status == 0 ) selected @endif>{{ __('status_inactive') }}</option>
                         </select>
                     </div>
-                        
+                    <div class="form-group col-md-6">
+
+@if(isset($company->image))
+@if(is_file($company->image))
+<img src="{{ asset($company->image) }}" class="img-fluid setting-image" alt="{{ __('field_site_logo') }}">
+<div class="clearfix"></div>
+@endif
+@endif
+
+<label for="logo">{{ __('image') }}: <span>{{ __('image_size', ['height' => 80, 'width' => 'Any']) }}</span></label>
+<input type="file" class="form-control" name="image" id="logo">
+
+<div class="invalid-feedback">
+  {{ __('required_field') }} {{ __('image') }}
+</div>
+</div>
                         </fieldset>
 
 

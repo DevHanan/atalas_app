@@ -25,8 +25,8 @@
                                     <th>#</th>
                                     <th>الإسم</th>
                                     <th>الحالة</th>
-            						<th>الفئة</th>
-            						<th> القسم</th>
+                                    <th> الصورة</th>
+
             						<th>{{ __('control') }}</th>
                                     </tr>
                                 </thead>
@@ -42,8 +42,8 @@
                                             <span class="badge badge-pill badge-danger">{{ __('status_inactive') }}</span>
                                             @endif
                                         </td>
-						<td> {{ optional($company->section)->title }} </td>
-<td>{{ optional($company->category)->title }}</td>					
+                                        <td><img src="{{asset($company->image)}}" style="width:40px"></td>					
+				
 						<td style="width: 270px;">
 
 					 
