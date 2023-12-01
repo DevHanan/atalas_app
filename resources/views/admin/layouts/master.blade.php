@@ -186,6 +186,39 @@
 
 
     @include('admin.layouts.common.footer_script')
+    <script type="text/javascript">
+	
+	$(".sectionobj").on('change',function(e){
+      e.preventDefault(e);
+      var categoryObj=$("#category_id");
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $.ajax({
+        type:'POST',
+        url: "{{ url('admin/filter-section') }}",
+        data:{
+          _token:$('input[name=_token]').val(),
+          section_id:$(this).val()
+        },
+        success:function(response){
+            // var jsonData=JSON.parse(response);
+            $('option', categoryObj).remove();
+            $('.categoryObj').append('<option value="">إختر الفئة</option>');
+            $.each(response, function(){
+              $('<option/>', {
+                'value': this.id,
+                'text': this.title
+              }).appendTo('.categoryObj');
+            });
+          }
+
+      });
+    });
+
+</script>
 
 </body>
 </html>

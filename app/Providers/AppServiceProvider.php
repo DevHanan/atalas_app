@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Setting;
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\Section;
 
 use View;
@@ -27,7 +28,8 @@ class AppServiceProvider extends ServiceProvider
         $setting = Setting::where('status', '1')->first();
         $sections = Section::all();
         $categories = Category::all();
+        $companies = Company::all();
         
-        View::share(['setting' => $setting,'sections'=>$sections,'categories'=>$categories]);
+        View::share(['setting' => $setting,'sections'=>$sections,'categories'=>$categories,'companies'=>$companies]);
     }
 }

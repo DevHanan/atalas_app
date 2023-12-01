@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProvinceController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\FilterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,9 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->prefix('admin')->group(f
 
     Route::resource('companies',CompanyController::class);
     Route::resource('products',ProductController::class);
+
+
+    Route::post('filter-section', [FilterController::class ,'filterSection'])->name('filter-section');
 
 });
 

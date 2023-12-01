@@ -12,7 +12,7 @@ class Product extends Model
     protected $fillable = [
         'name', 'company_id', 'section_id', 'category_id', 'status',
         'price','discount','supplier_price','gomalla_price','carton_price','quantity',
-        'max_order_quantity','description','status'
+        'max_order_quantity','description'
     ];
     
     protected $with=['category','section','photos','company'];
