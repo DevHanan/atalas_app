@@ -84,7 +84,7 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->prefix('admin')->group(f
     Route::get('visits-status/{id}', [VisitController::class,'status'])->name('visits.status');
 
     Route::resource('orders',OrderController::class);
-    Route::get('delivery-status/{id}', [DeliveryController::class,'status'])->name('delivery.status');
+    Route::get('orders-status/{id}', [OrderController::class,'status'])->name('orders.status');
 
 
 

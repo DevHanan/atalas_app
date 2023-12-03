@@ -52,23 +52,41 @@
                                          <td>{{ optional($row->client)->name }}</td>
                                          <td>{{ optional($row->delivery)->name }}</td>
                                          <td>{{ $row->total }}</td>
+                                         <td>
+                                            @if( $row->status == 1 )
+                                            <span class="badge badge-pill badge-success">مفعلة</span>
+                                            @else
+                                            <span class="badge badge-pill badge-danger"> غير مفعلة </span>
+                                            @endif
+                                        </td>
 
 
                                                
  
                                                
-                                                            
+                                                        
      <td>
 
-                                            @if( $row->status == 1 )
-                                            <a href="{{ route($route.'.status', $row->id) }}" class="btn btn-icon btn-danger btn-sm"><i class="fas fa-times"></i></a>
-                                            @else
-                                            <a href="{{ route($route.'.status', $row->id) }}" class="btn btn-icon btn-success btn-sm"><i class="fas fa-check"></i></a>
-                                            @endif
+     <button class="btn btn-icon btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#changeOrderStatusModal-{{ $row->id }}">
+                                            <i class="far fa-bell-slash	"></i>
+                                            </button>
+
+                                            <!-- Include Password Change modal -->
+                                            @include('admin.orders.status-change')
+
+                                            
+     <button class="btn btn-icon btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#changeOrderStatusModal-{{ $row->id }}">
+                                            <i class=" fas fa-shopping-cart	"></i>
+                                            </button>
+
+                                            <!-- Include Password Change modal -->
+                                            @include('admin.orders.add-delivery')
+
+                                           	
                                            
  
                                             
-                                            <a href="{{ url('admin/visits/'. $row->id) }}" class="btn btn-icon btn-primary btn-sm">
+                                            <a href="{{ url('admin/orders/'. $row->id) }}" class="btn btn-icon btn-primary btn-sm">
                                                 <i class="far fa-eye"></i>
                                             </a>
 
