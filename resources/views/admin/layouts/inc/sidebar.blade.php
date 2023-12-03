@@ -39,7 +39,7 @@
         </li>
 
 
-        <li class="nav-item pcoded-hasmenu @if ( Request::is('admin/sections*')  || Request::is('admin/categories*') || Request::is('admin/companies*') || Request::is('admin/products*')) pcoded-trigger @endif ">
+        <li class="nav-item pcoded-hasmenu @if ( Request::is('admin/sales*')  ) pcoded-trigger @endif ">
             <a href="#!" class="nav-link">
                 <span class="pcoded-micon"><i class="fas fa-users-cog"></i></span>
                 <span class="pcoded-mtext">إدارة المخزون </span>
@@ -74,6 +74,32 @@
             </ul>
         </li>
 
+
+        <li class="nav-item pcoded-hasmenu @if ( Request::is('admin/sales*') ) pcoded-trigger @endif ">
+            <a href="#!" class="nav-link">
+                <span class="pcoded-micon"><i class="fas fa-users-cog"></i></span>
+                <span class="pcoded-mtext"> المندوبين </span>
+            </a>
+            <ul class="pcoded-submenu" @if ( Request::is('admin/sales') ) style="display:block;" @else style="display:none;" @endif>
+
+
+
+                <li class="{{ Request::is('admin/delivery*') ? 'active' : '' }}"><a href="{{ url('admin/delivery') }}" class="">
+                        <span class="pcoded-mtext">
+                            مندوبين التوصيل
+
+                        </span> </a></li>
+
+                <li class="{{ Request::is('admin/sales*') ? 'active' : '' }}"><a href="{{ url('admin/sales') }}" class="">
+                        <span class="pcoded-mtext">
+                            مندوبين المبيعات
+
+                        </span> </a></li>
+             
+
+            </ul>
+        </li>
+
         <li class="{{ Request::is('admn/users/staff*') ? 'active' : '' }}">
             <a href="{{ url('admn/users/staff') }}" class="">
                 <span class="pcoded-micon"><i class="fa-solid fa-city"></i></span>
@@ -86,12 +112,7 @@
                 <span class="pcoded-mtext">
                     العملاء </span></a>
         </li>
-        <li class="{{ Request::is('admn/province*') ? 'active' : '' }}">
-            <a href="{{ route('admin.province.index') }}" class="">
-                <span class="pcoded-micon"><i class="fa-solid fa-city"></i></span>
-                <span class="pcoded-mtext">
-                    المندوبين </span></a>
-        </li>
+      
         <li class="{{ Request::is('admn/province*') ? 'active' : '' }}">
             <a href="{{ route('admin.province.index') }}" class="">
                 <span class="pcoded-micon"><i class="fa-solid fa-city"></i></span>

@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\FilterController;
+use App\Http\Controllers\Admin\SaleController;
+use App\Http\Controllers\Admin\DeliveryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,9 +59,16 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->prefix('admin')->group(f
 
     Route::resource('companies',CompanyController::class);
     Route::resource('products',ProductController::class);
+    Route::resource('sales',SaleController::class);
+    Route::get('sales-status/{id}', [SaleController::class,'status'])->name('sales.status');
+    Route::post('sales-password-change', [SaleController::class ,'passwordChange'])->name('sales-password-change');
 
-
+    Route::resource('delivery',DeliveryController::class);
+    Route::get('delivery-status/{id}', [DeliveryController::class,'status'])->name('delivery.status');
+    Route::post('delivery-password-change', [DeliveryController::class ,'passwordChange'])->name('delivery-password-change');
+   
     Route::post('filter-section', [FilterController::class ,'filterSection'])->name('filter-section');
+    Route::post('filter-district', [FilterController::class ,'filterDistrict'])->name('filter-district');
 
 });
 

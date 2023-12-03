@@ -218,6 +218,36 @@
       });
     });
 
+    $(".provinceobj").on('change',function(e){
+      e.preventDefault(e);
+      var districtObj=$("#district_id");
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $.ajax({
+        type:'POST',
+        url: "{{ url('admin/filter-district') }}",
+        data:{
+          _token:$('input[name=_token]').val(),
+          province_id:$(this).val()
+        },
+        success:function(response){
+            // var jsonData=JSON.parse(response);
+            $('option', districtObj).remove();
+            $('.districtObj').append('<option value="">إختر المدينة</option>');
+            $.each(response, function(){
+              $('<option/>', {
+                'value': this.id,
+                'text': this.title
+              }).appendTo('.districtObj');
+            });
+          }
+
+      });
+    });
+
 </script>
 
 </body>
