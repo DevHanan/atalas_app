@@ -37,7 +37,25 @@
 
             </ul>
         </li>
-
+        <li class="{{ Request::is('admn/clients*') ? 'active' : '' }}">
+            <a href="{{ route('admin.clients.index') }}" class="">
+                <span class="pcoded-micon"><i class="fa fa-user"></i></span>
+                <span class="pcoded-mtext">
+                    العملاء </span></a>
+        </li>
+      
+        <li class="{{ Request::is('admn/orders*') ? 'active' : '' }}">
+            <a href="{{ route('admin.orders.index') }}" class="">
+                <span class="pcoded-micon"><i class="fa fa-first-order"></i></span>
+                <span class="pcoded-mtext">
+                    الطلبات </span></a>
+        </li>
+        <li class="{{ Request::is('admn/visits*') ? 'active' : '' }}">
+            <a href="{{ route('admin.visits.index') }}" class="">
+                <span class="pcoded-micon"><i class="fa fa-eye"></i></span>
+                <span class="pcoded-mtext">
+                    الزيارات </span></a>
+        </li>
 
         <li class="nav-item pcoded-hasmenu @if ( Request::is('admin/sales*')  ) pcoded-trigger @endif ">
             <a href="#!" class="nav-link">
@@ -99,26 +117,14 @@
 
             </ul>
         </li>
-
+<!-- 
         <li class="{{ Request::is('admn/users/staff*') ? 'active' : '' }}">
             <a href="{{ url('admn/users/staff') }}" class="">
                 <span class="pcoded-micon"><i class="fa-solid fa-city"></i></span>
                 <span class="pcoded-mtext">
                     المستخدمين </span></a>
-        </li>
-        <li class="{{ Request::is('admn/province*') ? 'active' : '' }}">
-            <a href="{{ route('admin.province.index') }}" class="">
-                <span class="pcoded-micon"><i class="fa-solid fa-city"></i></span>
-                <span class="pcoded-mtext">
-                    العملاء </span></a>
-        </li>
-      
-        <li class="{{ Request::is('admn/province*') ? 'active' : '' }}">
-            <a href="{{ route('admin.province.index') }}" class="">
-                <span class="pcoded-micon"><i class="fa-solid fa-city"></i></span>
-                <span class="pcoded-mtext">
-                    الطلبات </span></a>
-        </li>
+        </li> -->
+     
 
 
 

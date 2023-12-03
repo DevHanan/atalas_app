@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'عرض مندوبى المبيعات')
+@section('title', 'عرض  الطلبات')
 @section('content')
 
 <!-- Start Content-->
@@ -15,12 +15,9 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5> عرض مندبين المبيعات</h5>
+                        <h5> عرض  الطلبات</h5>
                     </div>
-                    <div class="card-block">
-                        <a href="{{ route($route.'.create') }}" class="btn btn-rounded btn-primary">{{ __('btn_add_new') }}</a>
-                        <a href="{{ route($route.'.index') }}" class="btn btn-rounded btn-info">{{ __('btn_refresh') }}</a>
-                    </div>
+                   
 
                 </div>
             </div>
@@ -35,15 +32,12 @@
                                     <tr>
                                                                                 <th>#</th>
 
-                                        <th>{{ __('field_name') }}</th>
+                                        <th>تاريخ الطلب</th>
                                        
-                                        <th>{{ __('field_email') }}</th>
-                                        <th>{{ __('field_province') }}</th>
-                                        <th>{{ __('field_district') }}</th>
-
-                                       <th>{{ __('field_phone') }}</th>
-                                        <th>{{ __('field_status') }}</th>
-                                        
+                                        <th>العميل</th>
+                                        <th>مندوب التوصيل</th>     
+                                        <th>  إجمالى الطلب</th>     
+                                        <th>  حالة الطلب</th>                                                                 
                                         <th>{{ __('field_action') }}</th>
 
 
@@ -54,30 +48,17 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
 
-                                        <td>{{ $row->name }}</td>
-                                                                                <td>{{ $row->email }}</td>
-                                                                                                                            <td>{{ $row->phone }}</td>
-<td>  {{  optional($row->province)->title}}</td>
-<td> {{  optional($row->district)->title}} </td>
+                                        <td>{{ $row->order_date }}</td>
+                                         <td>{{ optional($row->client)->name }}</td>
+                                         <td>{{ optional($row->delivery)->name }}</td>
+                                         <td>{{ $row->total }}</td>
 
 
-
-
-                                        <td>
-                                            
-                                            
-                                            @if( $row->status == 1 )
-                                            <span class="badge badge-pill badge-success">{{ __('status_active') }}</span>
-                                            @else
-                                            <span class="badge badge-pill badge-danger">{{ __('status_blocked') }}</span>
-                                            @endif
-                                        </td>
-                                        <td>
                                                
  
                                                
                                                             
-     
+     <td>
 
                                             @if( $row->status == 1 )
                                             <a href="{{ route($route.'.status', $row->id) }}" class="btn btn-icon btn-danger btn-sm"><i class="fas fa-times"></i></a>
@@ -87,8 +68,8 @@
                                            
  
                                             
-                                            <a href="{{ route($route.'.edit', $row->id) }}" class="btn btn-icon btn-primary btn-sm">
-                                                <i class="far fa-edit"></i>
+                                            <a href="{{ url('admin/visits/'. $row->id) }}" class="btn btn-icon btn-primary btn-sm">
+                                                <i class="far fa-eye"></i>
                                             </a>
 
                                             <button type="button" class="btn btn-icon btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $row->id }}">
@@ -96,13 +77,7 @@
                                             </button>
                                             <!-- Include Delete modal -->
                                             @include('admin.layouts.inc.delete')
-                                             
-                                            <button class="btn btn-icon btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#changePasswordModal-{{ $row->id }}">
-                                            <i class="fas fa-key"></i>
-                                            </button>
-
-                                            <!-- Include Password Change modal -->
-                                            @include('admin.sales.password-change')
+                                          
                                             
                                             
                                         </td>

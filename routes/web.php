@@ -15,6 +15,9 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\FilterController;
 use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\Admin\DeliveryController;
+use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\VisitController;
+use App\Http\Controllers\Admin\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +72,21 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->prefix('admin')->group(f
    
     Route::post('filter-section', [FilterController::class ,'filterSection'])->name('filter-section');
     Route::post('filter-district', [FilterController::class ,'filterDistrict'])->name('filter-district');
+
+
+    Route::resource('clients',ClientController::class);
+    Route::get('clients-status/{id}', [ClientController::class,'status'])->name('clients.status');
+    Route::post('clients-password-change', [ClientController::class ,'passwordChange'])->name('client-password-change');
+   
+
+
+    Route::resource('visits',VisitController::class);
+    Route::get('visits-status/{id}', [VisitController::class,'status'])->name('visits.status');
+
+    Route::resource('orders',OrderController::class);
+    Route::get('delivery-status/{id}', [DeliveryController::class,'status'])->name('delivery.status');
+
+
 
 });
 

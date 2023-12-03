@@ -7,6 +7,7 @@ use App\Models\Setting;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\Province;
+use App\Models\Sale;
 use App\Models\Section;
 
 use View;
@@ -31,8 +32,10 @@ class AppServiceProvider extends ServiceProvider
         $categories = Category::all();
         $companies = Company::all();
         $provinces = Province::all();
+        $delivey = Sale::where('type','2')->get();
+        $sales = Sale::where('type','1')->get();
 
         
-        View::share(['provinces'=>$provinces,'setting' => $setting,'sections'=>$sections,'categories'=>$categories,'companies'=>$companies]);
+        View::share(['sales'=>$sales , 'delivery'=>$delivey ,'provinces'=>$provinces,'setting' => $setting,'sections'=>$sections,'categories'=>$categories,'companies'=>$companies]);
     }
 }

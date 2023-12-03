@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'عرض مندوبى المبيعات')
+@section('title', 'عرض  العملاء')
 @section('content')
 
 <!-- Start Content-->
@@ -15,7 +15,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5> عرض مندبين المبيعات</h5>
+                        <h5> عرض  العملاء</h5>
                     </div>
                     <div class="card-block">
                         <a href="{{ route($route.'.create') }}" class="btn btn-rounded btn-primary">{{ __('btn_add_new') }}</a>
@@ -36,14 +36,9 @@
                                                                                 <th>#</th>
 
                                         <th>{{ __('field_name') }}</th>
-                                       
-                                        <th>{{ __('field_email') }}</th>
                                         <th>{{ __('field_province') }}</th>
-                                        <th>{{ __('field_district') }}</th>
-
-                                       <th>{{ __('field_phone') }}</th>
+                                        <th>{{ __('field_location') }}</th>
                                         <th>{{ __('field_status') }}</th>
-                                        
                                         <th>{{ __('field_action') }}</th>
 
 
@@ -51,19 +46,12 @@
                                 </thead>
                                 <tbody>
                                   @foreach( $rows as $key => $row )
-                                    <tr>
+                                    <tr style="text-align: center;">
                                         <td>{{ $loop->iteration }}</td>
-
                                         <td>{{ $row->name }}</td>
-                                                                                <td>{{ $row->email }}</td>
-                                                                                                                            <td>{{ $row->phone }}</td>
-<td>  {{  optional($row->province)->title}}</td>
-<td> {{  optional($row->district)->title}} </td>
-
-
-
-
-                                        <td>
+                                     <td>{{ optional($row->province)->title  }} -   {{ optional($row->district)->title  }}</td>
+                                     <td>  {{  $row->location }}</td>
+                                     <td>
                                             
                                             
                                             @if( $row->status == 1 )
@@ -73,12 +61,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                               
- 
-                                               
-                                                            
-     
-
+                                            
                                             @if( $row->status == 1 )
                                             <a href="{{ route($route.'.status', $row->id) }}" class="btn btn-icon btn-danger btn-sm"><i class="fas fa-times"></i></a>
                                             @else

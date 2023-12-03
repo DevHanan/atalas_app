@@ -39,7 +39,8 @@
                                        
                                         <th>{{ __('field_email') }}</th>
                     
-
+                                        <th>{{ __('field_province') }}</th>
+                                        <th>{{ __('field_district') }}</th>
                                        <th>{{ __('field_phone') }}</th>
                                         <th>{{ __('field_status') }}</th>
                                         
@@ -57,7 +58,9 @@
                                                                                 <td>{{ $row->email }}</td>
                                                                                                                             <td>{{ $row->phone }}</td>
 
+                                                                                                                            <td> {{  optional($row->province)->title}}</td>                                                                       <td>{{ $row->phone }}</td>
 
+<td> {{  optional($row->district)->title}}</td>   
 
 
                                         <td>

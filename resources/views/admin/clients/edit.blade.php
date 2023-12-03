@@ -21,7 +21,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>تعديل بيانات  مندوب توصيل </h5>
+                        <h5>تعديل بيانات   العميل </h5>
                     </div>
                     <div class="card-block">
                         <a href="{{ route($route.'.index') }}" class="btn btn-rounded btn-primary">{{ __('btn_back') }}</a>
@@ -49,7 +49,7 @@
                                   {{ __('required_field') }}  {{ __('field_name') }}
                                 </div>
                             </div>
-                                                        <div class="form-group col-md-6">
+                            <div class="form-group col-md-6">
                                 <label for="email">{{ __('field_email') }} <span>*</span></label>
                                 <input type="text" class="form-control" name="email" id="email" value="{{ $row->email }}" required>
 
@@ -58,8 +58,46 @@
                                 </div>
                             </div>
 
-                    
+                            <div class="form-group col-md-6">
+                            <label for="province">المدينة  <span>*</span></label>
+                            <select class="form-control select2-multiple provinceobj" name="province_id" id="province" required  >
+                                <option value="">{{ __('select') }}</option>
+                                @foreach( $provinces as $province )
+                                <option value="{{ $province->id }}" @if(old('province_id') == $province->id) selected @endif>{{ $province->title }}</option>
+                                @endforeach
+                            </select>
 
+                            <div class="invalid-feedback">
+                              {{ __('required_field') }} {{ __('field_province') }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                            <label for="district">المنطقة  <span>*</span></label>
+                            <select class="form-control select2-multiple districtObj" name="district_id" id="district" required  >
+                              
+                            </select>
+
+                            <div class="invalid-feedback">
+                              {{ __('required_field') }} {{ __('field_province') }}
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="sale_id">مندوب المبيعات   <span>*</span></label>
+                            <select class="form-control select2-multiple " name="sale_id" id="sale_id"   >
+                                <option value="">{{ __('select') }}</option>
+                                @foreach( $sales as $sale )
+                                <option value="{{ $sale->id }}" @if(old('sale_id') == $sale->id) selected @endif>{{ $sale->name }}</option>
+                                @endforeach
+                            </select>
+
+                            <div class="invalid-feedback">
+                              {{ __('required_field') }} {{ __('field_province') }}
+                            </div>
+                        </div>
+                         
                             <div class="form-group col-md-6">
                                 <label for="phone">{{ __('field_phone') }} <span>*</span></label>
                                 <input type="text" class="form-control" name="phone" id="phone" value="{{ $row->phone }}" required>
@@ -68,6 +106,21 @@
                                   {{ __('required_field') }} {{ __('field_phone') }}
                                 </div>
                             </div>
+                            
+
+                            <div class="form-group col-md-6">
+                                <label for="phone">{{ __('field_location') }} <span>*</span></label>
+                                <input type="text" class="form-control" name="location" id="location" value="{{ $row->location  }}" required>
+
+                                <div class="invalid-feedback">
+                                  {{ __('required_field') }} {{ __('field_location') }}
+                                </div>
+                            </div>
+                      
+
+                    
+
+       
   
                             
                             </fieldset>
