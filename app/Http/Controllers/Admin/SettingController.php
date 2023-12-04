@@ -19,7 +19,7 @@ class SettingController extends Controller
     public function __construct()
     {
         // Module Data
-        $this->title = trans_choice('module_setting', 1);
+        $this->title = 'بروفايل المتجر';
         $this->route = 'admin.setting';
         $this->view = 'admin.setting';
         $this->path = 'setting';
