@@ -51,14 +51,6 @@ class ExhibitionsController extends Controller
         return $this->okApiResponse($items,__('data loaded'));
     }
     
-    public function rate(Request $request){
-        $request->merge(['user_id'=>auth()->user()->id]);
-        $rate_exist = Rate::where('exhibition_id',$request->exhibition_id)->where('user_id',auth()->user()->id)->first();
-        if($rate_exist)
-        $rate_exist->delete();
-        $rate = Rate::create($request->all());
-                return $this->okApiResponse($rate,__('exhibition rated successfully'));
-
-    }
+   
   
 }

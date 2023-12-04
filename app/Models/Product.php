@@ -12,12 +12,16 @@ class Product extends Model
     protected $fillable = [
         'name', 'company_id', 'section_id', 'category_id', 'status',
         'price','discount','supplier_price','gomalla_price','carton_price','quantity',
-        'max_order_quantity','description'
+        'max_order_quantity','description','best_seller','highest_rated','recommend'
     ];
     
     protected $with=['category','section','photos','company'];
     protected $appends = ['fullPathImg'];
    
+    public function scopeActive($query)
+    {
+    return $query->where('status', '1');
+    }
     public function company(){
         return $this->belongsTo(Company::class);
     }

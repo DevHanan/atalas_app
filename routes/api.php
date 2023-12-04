@@ -19,7 +19,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\HomeController;
-use App\Http\Controllers\Api\ItemController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\NotificationController;
 use  App\Http\Controllers\Api\ForgotPasswordController;
 use  App\Http\Controllers\Api\FavouriteController;
@@ -56,25 +56,29 @@ use  App\Http\Controllers\Api\OrderController;
     Route::get('home',[HomeController::class,'home']);
 
    
-
-    Route::get('unit-types',[HomeController::class,'unitTypes']);
-    Route::get('rooms',[HomeController::class,'rooms']);
-
-
-    Route::post('contact-us',[ContactUsController::class,'store']);
-    Route::get('categories',[HomeController::class,'categories']);
+    Route::get('sections',[HomeController::class,'sections']);
+    Route::get('category-by-section/{id}',[HomeController::class,'CategoryBySection']);
 
 
-     Route::get('product/{id}',[ItemController::class,'show']);
-    Route::get('product-by-category/{id}',[ItemController::class,'ProductByCategory']);
-     Route::get('product-by-exhibition/{id}',[ItemController::class,'ProductByExhibition']);
-     Route::get('offer',[ItemController::class,'offer']);
+    Route::get('product/{id}',[ProductController::class,'show']);
+    Route::get('product-by-category/{id}',[ProductController::class,'ProductByCategory']);
+    Route::get('list-recommend-products',[ProductController::class,'recommendProduct']);
+    Route::get('list-top-rated-products',[ProductController::class,'topRatedProduct']);
+    Route::get('list-best-selling-products',[ProductController::class,'bestSellingProduct']);
+    Route::get('products',[ProductController::class,'list']);
 
 
-    Route::middleware(['auth:sanctum','lang'])->group(function (){
+
+    Route::middleware(['auth:sanctum'])->group(function (){
+
+
+
         Route::post('logout',[AuthController::class,'logout']);
         Route::post('delete-account',[ProfileController::class,'deleteaccount']);
         
+
+        Route::post('product-rate',[ProductController::class,'rate']);
+
         
         /* Order Route */
         Route::get('order-list',[OrderController::class,'index']);
@@ -84,7 +88,6 @@ use  App\Http\Controllers\Api\OrderController;
         
          Route::get('favourites-list',[FavouriteController::class,'index']);
         Route::get('favourite/{id}',[FavouriteController::class,'favourite']);
-        Route::post('exhibition-rate',[ExhibitionsController::class,'rate']);
         
         
         Route::get('profile',[ProfileController::class,'index']);
@@ -101,10 +104,8 @@ use  App\Http\Controllers\Api\OrderController;
         Route::post('profile/notification/refresh-notification-token',[NotificationController::class,'refreshToken']);
     });
 
-    Route::get('search',[HomeController::class,'search']);
+ Route::get('search',[HomeController::class,'search']);
 
-Route::post('password/email',  [ForgotPasswordController::class,'sendCode']);
-Route::post('password/code/check', [ForgotPasswordController::class,'checkCode']);
-Route::post('password/reset', [ForgotPasswordController::class,'resetPassword']);
+
 
 
