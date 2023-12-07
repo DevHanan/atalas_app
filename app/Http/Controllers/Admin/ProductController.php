@@ -82,8 +82,8 @@ class ProductController extends Controller
               
             $thumbnail = $request->img;
            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->move(public_path('/uploads/Products/mainImg/'),$filename);
-            $product->main_img ='public/uploads/Products/mainImg/'.$filename;
+            $thumbnail->move(public_path('/uploads/products/mainImg/'),$filename);
+            $product->main_img ='public/uploads/products/mainImg/'.$filename;
             $product->save();
          
         }
@@ -93,8 +93,8 @@ class ProductController extends Controller
                     $thumbnail_path = $photo;
                    $file = "-".time() .$thumbnail_path->getClientOriginalExtension();
                   $file= md5(Str::random(30).time().'_'.$thumbnail_path).'.'.$thumbnail_path->getClientOriginalExtension();
-                    $thumbnail_path->move(public_path('/uploads/Products/photos/'),$file);
-                    Photo::create(['product_id'=>$product->id , 'path'=>'public/uploads/Products/photos/'.$file]);
+                    $thumbnail_path->move(public_path('/uploads/products/photos/'),$file);
+                    Photo::create(['product_id'=>$product->id , 'path'=>'public/uploads/products/photos/'.$file]);
               }
          
         }
@@ -159,7 +159,7 @@ class ProductController extends Controller
               
             $thumbnail = $request->img;
            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->move(public_path('/uploads/Products/'),$filename);
+            $thumbnail->move(public_path('/uploads/products/'),$filename);
             $product->main_img ='public/uploads/products/'.$filename;
             $product->save();
          
@@ -170,7 +170,7 @@ class ProductController extends Controller
               foreach($request->photos as $img){
             $thumbnail_path = $img;
             $file= md5(Str::random(30).time().'_'.$thumbnail_path).'.'.$thumbnail_path->getClientOriginalExtension();
-            $thumbnail_path->move(public_path('/uploads/Products/photos/'),$file);
+            $thumbnail_path->move(public_path('/uploads/products/photos/'),$file);
             Photo::create(['product_id'=>$product->id , 'path'=>'public/uploads/Products/photos/'.$file]);
               }
          

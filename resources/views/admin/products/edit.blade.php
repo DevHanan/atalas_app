@@ -165,9 +165,9 @@
                     
                                             <div class="form-group col-md-12">
 
-                            @if(isset($row->img))
-                            @if(is_file($row->img))
-                            <img src="{{ asset($row->img) }}" class="img-fluid setting-image" alt="{{ __('field_site_logo') }}">
+                            @if(isset($row->main_img))
+                            @if(is_file($row->main_img))
+                            <img src="{{ asset($row->main_img) }}" class="img-fluid setting-image" alt="{{ __('field_site_logo') }}">
                             <div class="clearfix"></div>
                             @endif
                             @endif
