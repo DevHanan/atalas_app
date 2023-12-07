@@ -62,7 +62,9 @@
                         <div class="form-group col-md-12">
                             <label for="category">الفئة  <span>*</span></label>
                             <select class="form-control select2-multiple categoryObj" name="category_id" id="category" required  >
-                              
+                            @foreach( $category as $categoryrow )
+                                <option value="{{ $categoryrow->id }}">{{ $categoryrow->title }}</option>
+                                @endforeach
                             </select>
 
                             <div class="invalid-feedback">

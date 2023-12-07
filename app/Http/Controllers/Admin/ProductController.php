@@ -7,11 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Toastr;
 use App\Models\Photo;
-use App\Models\User;
-use App\Models\Notification;
+use App\Models\Category;
 use App\Models\Product;
-use Kutia\Larafirebase\Facades\Larafirebase;
-
 
 class ProductController extends Controller
 {
@@ -129,12 +126,14 @@ class ProductController extends Controller
      */
     public function edit( $id)
     {
-           $data['title'] = $this->title;
+        $data['title'] = $this->title;
         $data['route'] = $this->route;
         $data['view'] = $this->view;
         $data['path'] = $this->path;
         $data['access'] = $this->access;
         $data['row'] = Product::with('photos')->find($id);
+        $data['category'] = Category::where('id',$data['row']->category_id)->get();
+
 
       return view($this->view.'.edit', $data);
 
@@ -167,11 +166,10 @@ class ProductController extends Controller
         }
         
              if($request->photos){
-            //   Photo::where('product_id',$product->id)->delete();
+               Photo::where('product_id',$product->id)->delete();
               foreach($request->photos as $img){
             $thumbnail_path = $img;
             $file= md5(Str::random(30).time().'_'.$thumbnail_path).'.'.$thumbnail_path->getClientOriginalExtension();
-                    $thumbnail_path->move(public_path('/uploads/Products/photos/'),$file);
             $thumbnail_path->move(public_path('/uploads/Products/photos/'),$file);
             Photo::create(['product_id'=>$product->id , 'path'=>'public/uploads/Products/photos/'.$file]);
               }
