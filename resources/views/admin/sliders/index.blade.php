@@ -35,10 +35,8 @@
 						<td>{{$slider->title}}</td>
 							<td>
 							@if($slider->status==1)
-							<span class="fas fa-check-circle text-success" ></span>
-							@else
-							<span class="fas fa-check-circle text-error" ></span>
-							@endif
+							{{ __('status_active') }}							@else
+							{{ __('status_inactive') }}							@endif
 						</td>
 						<td><img src="{{asset($slider->image)}}" style="width:40px"></td>
 

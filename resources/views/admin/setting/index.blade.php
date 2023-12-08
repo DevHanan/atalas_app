@@ -32,47 +32,61 @@
                         </div>
 
 
-                        <hr/>
 
                         <div class="form-group col-md-6">
 
-                            @if(isset($row->logo_path))
-                            @if(is_file('uploads/'.$path.'/'.$row->logo_path))
-                            <img src="{{ asset('uploads/'.$path.'/'.$row->logo_path) }}" class="img-fluid setting-image" alt="{{ __('field_site_logo') }}">
-                            <div class="clearfix"></div>
-                            @endif
-                            @endif
+                          
 
-                            <label for="logo">{{ __('field_site_logo') }}: <span>{{ __('image_size', ['height' => 80, 'width' => 'Any']) }}</span></label>
-                            <input type="file" class="form-control" name="logo" id="logo">
+                            <label for="logo">{{ __('field_site_logo') }}</span></label>
+                            <input type="file" class="form-control" name="logo_path" id="logo">
 
                             <div class="invalid-feedback">
                               {{ __('required_field') }} {{ __('field_site_logo') }}
                             </div>
+                            @if(isset($row->logo_path))
+                            <img src="{{ asset($row->logo_path) }}" class="img-fluid setting-image" alt="{{ __('field_site_logo') }}">
+                            <div class="clearfix"></div>
+                            @endif
                         </div>
 
                         <div class="form-group col-md-6">
 
-                            @if(isset($row->favicon_path))
-                            @if(is_file('uploads/'.$path.'/'.$row->favicon_path))
-                            <img src="{{ asset('uploads/'.$path.'/'.$row->favicon_path) }}" class="img-fluid setting-image" alt="{{ __('field_site_favicon') }}">
-                            <div class="clearfix"></div>
-                            @endif
-                            @endif
+                           
 
-                            <label for="favicon">{{ __('field_site_favicon') }}: <span>{{ __('image_size', ['height' => 64, 'width' => 64]) }}</span></label>
-                            <input type="file" class="form-control" name="favicon" id="favicon">
+                            <label for="favicon">{{ __('field_site_favicon') }}</label>
+                            <input type="file" class="form-control" name="favicon_path" id="favicon">
 
                             <div class="invalid-feedback">
                               {{ __('required_field') }} {{ __('field_site_favicon') }}
                             </div>
+                            @if(isset($row->favicon_path))
+                            <img src="{{ asset($row->favicon_path) }}" class="img-fluid setting-image" alt="{{ __('field_site_favicon') }}">
+                            <div class="clearfix"></div>
+                            @endif
                         </div>
 
                         
                         </hr>
                         <div class="form-group col-md-6">
                             <label for="phone">{{ __('field_phone') }} <span>*</span></label>
-                            <input type="text" class="form-control" name="phone" id="currency" value="{{ isset($row->phone)?$row->phone:'' }}" required>
+                            <input type="text" class="form-control" name="phone" id="phone" value="{{ isset($row->phone)?$row->phone:'' }}" required>
+
+                            <div class="invalid-feedback">
+                              {{ __('required_field') }} {{ __('field_phone') }}
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="phone2">{{ __('field_phone2') }} <span>*</span></label>
+                            <input type="text" class="form-control" name="phone2" id="phone2" value="{{ isset($row->phone2)?$row->phone2:'' }}" required>
+
+                            <div class="invalid-feedback">
+                              {{ __('required_field') }} {{ __('field_phone') }}
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="phone3">{{ __('field_phone3') }} <span>*</span></label>
+                            <input type="text" class="form-control" name="phone3" id="phone3" value="{{ isset($row->phone3)?$row->phone3:'' }}" required>
 
                             <div class="invalid-feedback">
                               {{ __('required_field') }} {{ __('field_phone') }}
@@ -90,7 +104,7 @@
                             
                             
                             
-    <div class="form-group col-md-12">
+    <div class="form-group col-md-6">
                             <label for="address">{{ __('field_address') }} <span>*</span></label>
                             <input type="text" class="form-control" name="address" id="currency" value="{{ isset($row->address)?$row->address:'' }}" required>
 
@@ -116,12 +130,21 @@
                               {{ __('required_field') }} {{ __('field_twitter_url') }}
                             </div>
                             </div>
+                         
                             
+                            <div class="form-group col-md-6">
+                            <label for="youtube_url">{{ __('field_youtube_url') }} <span>*</span></label>
+                            <input type="text" class="form-control" name="youtube_url" id="youtube_url" value="{{ isset($row->youtube_url)?$row->youtube_url:'' }}" required>
+
+                            <div class="invalid-feedback">
+                              {{ __('required_field') }} {{ __('field_youtube_url') }}
+                            </div>
+                            </div>
                             
                             
     <div class="form-group col-md-6">
                             <label for="instgram_url">{{ __('field_instgram_url') }} <span>*</span></label>
-                            <input type="text" class="form-control" name="instgram_url" id="currency" value="{{ isset($row->instgram_url)?$row->instgram_url:'' }}" required>
+                            <input type="text" class="form-control" name="instgram_url" id="instgram_url" value="{{ isset($row->instgram_url)?$row->instgram_url:'' }}" required>
 
                             <div class="invalid-feedback">
                               {{ __('required_field') }} {{ __('field_instgram_url') }}

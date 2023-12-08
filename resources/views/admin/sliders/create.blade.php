@@ -51,8 +51,8 @@
                             <label for="status">حالة<span>*</span></label>
                             <select class="form-control" name="status" id="status" required>
                                 <option value="">{{ __('select') }}</option>
-                                <option value="1">{{ __('yes') }}</option>
-                                  <option value="0">{{ __('No') }}</option>
+                                <option value="1">{{ __('status_active') }}</option>
+                                  <option value="0">{{ __('status_inactive') }}</option>
                               
                             </select>
 
