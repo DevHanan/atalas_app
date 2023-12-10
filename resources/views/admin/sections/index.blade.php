@@ -24,31 +24,38 @@
                                     <tr>
                                                     	<th>#</th>
             						<th>إسم</th>
+                                    <th>الحالة</th>
             						<th>{{ __('field_photo') }}</th>
             						<th>{{ __('control') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                 @foreach($sections as $section)
+                                 @foreach($sections as $row)
 					<tr >
-						<td class="ui-state-default drag-handler" data-faq="{{$section->id}}">{{$section->id}}</td>
-						<td>{{$section->title}}</td>
-<td><img src="{{asset($section->image)}}" style="width:40px"></td>					
+						<td class="ui-state-default drag-handler" data-faq="{{$row->id}}">{{$row->id}}</td>
+						<td>{{$row->title}}</td>
+                        <td>
+                                            @if( $row->status == 1 )
+                                            <span class="badge badge-pill badge-success">{{ __('status_active') }}</span>
+                                            @else
+                                            <span class="badge badge-pill badge-danger">{{ __('status_inactive') }}</span>
+                                            @endif
+                                        </td>
+<td><img src="{{asset($row->image)}}" style="width:40px"></td>					
 						<td style="width: 270px;">
 
 					 
 
-							<a href="{{url('admin/sections/'.$section->id.'/edit')}}">
+							<a href="{{url('admin/sections/'.$row->id.'/edit')}}">
 								<span class="btn  btn-outline-success btn-sm font-1 mx-1">
 									<span class="fas fa-wrench "></span> {{__('modal_edit')}}
 								</span>
 							</a>
-							<form method="POST" action="{{url('admin/sections/destroy')}}" class="d-inline-block">@csrf @method("DELETE")
-							<input type="hidden" name="id" value="{{$section->id}}">
-								<button class="btn  btn-outline-danger btn-sm font-1 mx-1" onclick="var result = confirm('هل أنت متأكد من عملية الحذف ؟');if(result){}else{event.preventDefault()}">
-									<span class="fas fa-trash "></span> {{ __('btn_delete') }}
-								</button>
-							</form>
+                            <button type="button" class="btn btn-icon btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $row->id }}">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                            <!-- Include Delete modal -->
+                                            @include('admin.layouts.inc.delete')
 						</td>
 					</tr>
 					@endforeach

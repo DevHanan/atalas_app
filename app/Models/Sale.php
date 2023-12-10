@@ -3,12 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Passport\PersonalAccessToken;
 
-class Sale extends Model
+
+class Sale extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory;
     protected $fillable = ['name','phone','email','province_id','district_id','password'];
+    protected $hidden = ['password'];
+    protected $guard='sales';
 
     public function district(){
         return $this->belongsTo(District::class);

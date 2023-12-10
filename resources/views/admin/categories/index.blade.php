@@ -24,6 +24,7 @@
                                     <tr>
                                                     	<th>#</th>
             						<th>الفئة</th>
+                                    <th>الحالة</th>
             						          	<th> القسم</th>
             						<th>{{ __('field_photo') }}</th>
             						<th>{{ __('control') }}</th>
@@ -34,6 +35,13 @@
 					<tr >
 						<td class="ui-state-default drag-handler" data-faq="{{$category->id}}">{{$category->id}}</td>
 						<td>{{$category->title}}</td>
+                        <td>
+                                            @if( $row->status == 1 )
+                                            <span class="badge badge-pill badge-success">{{ __('status_active') }}</span>
+                                            @else
+                                            <span class="badge badge-pill badge-danger">{{ __('status_inactive') }}</span>
+                                            @endif
+                                        </td>
 						<td> {{ optional($category->section)->title }} </td>
 <td><img src="{{asset($category->image)}}" style="width:40px"></td>					
 						<td style="width: 270px;">

@@ -55,7 +55,13 @@
                        
 
                        
-
+                        <div class="form-group">
+                        <label for="status" class="form-label">{{ __('select_status') }}</label>
+                        <select class="form-control" name="status" id="status">
+                            <option value="1" @if( $category->status == 1 ) selected @endif>{{ __('status_active') }}</option>
+                            <option value="0" @if( $category->status == 0 ) selected @endif>{{ __('status_inactive') }}</option>
+                        </select>
+                    </div>
                            <hr/>
 
                         <div class="form-group col-md-6">

@@ -19,7 +19,7 @@
                         <a href="{{ route('admin.sections.create') }}" class="btn btn-rounded btn-info">{{ __('btn_refresh') }}</a>
                     </div>
 
-                    <form class="needs-validation" novalidate action="{{ route('admin.sections.update',$category) }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" novalidate action="{{ route('admin.sections.update',$section) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
                     <div class="card-block">
@@ -29,13 +29,20 @@
 
                         <div class="form-group col-md-12">
                             <label for="title"> إسم القسم <span>*</span></label>
-                            <input type="text" class="form-control" name="title" id="title" value="{{ old('title',$category) }}" required>
+                            <input type="text" class="form-control" name="title" id="title" value="{{ old('title',$section) }}" required>
 
                             <div class="invalid-feedback">
                               {{ __('required_field') }}  إسم القسم
                             </div>
                         </div>
                         
+                        <div class="form-group">
+                        <label for="status" class="form-label">{{ __('select_status') }}</label>
+                        <select class="form-control" name="status" id="status">
+                            <option value="1" @if( $section->status == 1 ) selected @endif>{{ __('status_active') }}</option>
+                            <option value="0" @if( $section->status == 0 ) selected @endif>{{ __('status_inactive') }}</option>
+                        </select>
+                    </div>
                                                
 
                        
@@ -46,9 +53,9 @@
 
                         <div class="form-group col-md-6">
 
-                            @if(isset($category->image))
-                            @if(is_file($category->image))
-                            <img src="{{ asset($category->image) }}" class="img-fluid setting-image" alt="{{ __('field_site_logo') }}">
+                            @if(isset($section->image))
+                            @if(is_file($section->image))
+                            <img src="{{ asset($section->image) }}" class="img-fluid setting-image" alt="{{ __('field_site_logo') }}">
                             <div class="clearfix"></div>
                             @endif
                             @endif

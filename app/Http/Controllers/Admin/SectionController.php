@@ -12,6 +12,11 @@ class SectionController extends Controller
 
     public function __construct()
     {
+        $this->title = 'Sectons';
+        $this->route = 'admin.sections';
+        $this->view = 'admin.sections';
+        $this->path = 'sections';
+        $this->access = 'sections';
         // $this->middleware('permission:sections-create', ['only' => ['create','store']]);
         // $this->middleware('permission:sections-read',   ['only' => ['show', 'index']]);
         // $this->middleware('permission:sections-update',   ['only' => ['edit','update']]);
@@ -24,16 +29,21 @@ class SectionController extends Controller
      */
     public function index(Request $request)
     {
-        $title = trans('backend.list_sections');
-        $sections =  Section::where(function($q)use($request){
+        $data['title'] = $this->title;
+        $data['route'] = $this->route;
+        $data['view'] = $this->view;
+        $data['path'] = $this->path;
+        $data['access'] = $this->access;
+        
+        $data['sections'] = Section::where(function($q)use($request){
             if($request->id!=null)
                 $q->where('id',$request->id);
             if($request->q!=null)
                 $q->where('title','LIKE','%'.$request->q.'%');
         })->orderBy('id','DESC')->paginate();
 
-        return view('admin.sections.index',compact('sections','title'));
-    }
+        return view($this->view.'.index', $data);
+            }
 
     /**
      * Show the form for creating a new resource.

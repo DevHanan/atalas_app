@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Http\Resources\UserResource;
-use App\Models\Token;
-use App\Models\User;
-use App\Models\District;
-use App\Models\Province;
+use App\Http\Resources\Api\ClientResource;
+use App\Models\Client;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,16 +23,13 @@ class AuthController extends Controller
     // login step 1
     public function login(LoginRequest $request)
     {
-        $rules=array(
-            "email"                 => 'required|email',
-           'password' => 'min:8|required',
-        );
-         if(Auth::attempt(['email' =>$request->email ,'password' =>$request->password])){ 
-             $user = auth()->user();
-             $token = $user->createToken('apiToken')->plainTextToken;
-             auth()->user()->update(['api_token' => $token]);
-            $data = auth()->user() ;
-            return $this->okApiResponse(new UserResource($data),__("User information"));
+       
+         if(Auth::guard('clients')->attempt(['email' =>$request->email ,'password' =>$request->password,'status'=>'1'])){ 
+             $client = auth()->guard('clients')->user();
+             $token = $client->createToken('apiToken')->plainTextToken;
+             $client->api_token = $token;
+             $client->save();
+            return $this->okApiResponse(new ClientResource($client),__("client information"));
                 } 
                 else{ 
                    return $this->errorApiResponse([],401,__('invaild data')); 
@@ -48,25 +42,14 @@ class AuthController extends Controller
     {
 
 
-        if ($request->has('image') && $request->image != null){
-            $requests['image'] = $this->saveImage($request->image);
-            $request->files->remove('image');
-        }
-        if($request->district_id){
-            $district = District::find($request->district_id);
-         $prov = Province::find($district->province_id);
-        }else{
-            $district = District::where('status',1)->first();
-         $prov = Province::find($district->province_id); 
-        }
-
-        $request->merge(['password' => Hash::make($request->password) ,'status'=>'0' ,'address'=> $prov->title . '-' . $district->title ]);
+    
+        $request->merge(['password' => Hash::make($request->password) ,'status'=>'0' ]);
         
-        $user = User::create($request->all());
+        $user = Client::create($request->all());
         $token =$this->generateToken($user);
         $user->api_token = $token->plainTextToken;
         $user->save();
-        return $this->createdApiResponse(new UserResource($user),__("Account Created Successfully"));
+        return $this->createdApiResponse(new ClientResource($user),__("Account Created Successfully"));
     }
 
  

@@ -49,12 +49,12 @@ class ProductController extends Controller
     }
 
     public function rate(Request $request){
-        $request->merge(['user_id'=>auth()->user()->id]);
-        $rate_exist = Rate::where('product_id',$request->exhibition_id)->where('user_id',auth()->user()->id)->first();
+        $request->merge(['client_id'=>auth()->guard('clients')->user()->id]);
+        $rate_exist = Rate::where('product_id',$request->exhibition_id)->where('client_id',auth()->guard('clients')->user()->id)->first();
         if($rate_exist)
         $rate_exist->delete();
         $rate = Rate::create($request->all());
-                return $this->okApiResponse($rate,__('exhibition rated successfully'));
+                return $this->okApiResponse($rate,__('product rated successfully'));
 
     }
 

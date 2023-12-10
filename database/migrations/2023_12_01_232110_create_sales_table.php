@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('type')->default('1')->comment('1 sales, 2 delivery');
             $table->string('email')->unique();
             $table->string('password');
+            $table->text('api_token')->nullable();
             $table->timestamps();
         });
     }

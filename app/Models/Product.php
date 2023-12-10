@@ -15,8 +15,8 @@ class Product extends Model
         'max_order_quantity','description','best_seller','highest_rated','recommend'
     ];
     
-    protected $with=['category','section','photos','company'];
-    protected $appends = ['fullPathImg'];
+    protected $with=['category','section','photos','company','rates'];
+    protected $appends = ['fullPathImg','reviewCount'];
    
     public function scopeActive($query)
     {
@@ -37,6 +37,11 @@ class Product extends Model
      public function photos(){
         return $this->hasMany(Photo::class);
     }
+
+    public function rates(){
+        return $this->hasMany(Rate::class);
+    }
+    
     
 
     protected function getfullPathImgAttribute (){
@@ -44,5 +49,9 @@ class Product extends Model
             return env('DEFAULT_IMAGE');
         else
             return asset($this->main_img);
+    }
+
+    protected function getreviewCountAttribute (){
+        return $this->rates()->count();
     }
 }

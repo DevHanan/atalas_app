@@ -21,7 +21,7 @@ use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\NotificationController;
-use  App\Http\Controllers\Api\ForgotPasswordController;
+use  App\Http\Controllers\Api\SaleAuthController;
 use  App\Http\Controllers\Api\FavouriteController;
 use  App\Http\Controllers\Api\OrderController;
 
@@ -48,9 +48,11 @@ use  App\Http\Controllers\Api\OrderController;
 
 
     
-    Route::post('login',[AuthController::class,'login']);
-    Route::post('register',[AuthController::class,'register']);
+    Route::post('client-login',[AuthController::class,'login']);
+    Route::post('client-register',[AuthController::class,'register']);
     Route::post('update-fcm',[AuthController::class,'updateToken']);
+
+    Route::post('sale-login',[SaleAuthController::class,'login']);
 
     Route::get('settings',[HomeController::class,'settings']);
     Route::get('home',[HomeController::class,'home']);
@@ -69,7 +71,7 @@ use  App\Http\Controllers\Api\OrderController;
 
 
 
-    Route::middleware(['auth:sanctum'])->group(function (){
+    Route::middleware(['auth:clients'])->group(function (){
 
 
 

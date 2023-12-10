@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sections', function (Blueprint $table) {
+        Schema::create('rates', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
-            $table->string('slug')->unique()->index();
-            $table->text('title')->nullable();
-            $table->boolean('status')->default('1');
+            $table->integer('product_id')->unsigned();
+            $table->integer('client_id')->unsigned();
+            $table->double('rate');
+            $table->text('comment')->nullable();
+            $table->integer('status')->default('1')->comment('0 Inactive, 1 Active');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sections');
+        Schema::dropIfExists('rates');
     }
 };
