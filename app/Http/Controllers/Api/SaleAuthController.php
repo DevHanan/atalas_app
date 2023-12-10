@@ -24,9 +24,9 @@ class SaleAuthController extends Controller
         );         
 
 
-         if(Auth::guard('sales_api')->attempt(['email' =>$request->email ,'password' =>$request->password,'type'=>$request->type])){ 
-             $token = auth::guard('sales_api')->user()->createToken('apiToken')->plainTextToken;
-             $user = auth::guard('sales_api')->user();
+         if(Auth::guard('sales')->attempt(['email' =>$request->email ,'password' =>$request->password,'type'=>$request->type])){ 
+             $token = auth::guard('sales')->user()->createToken('apiToken')->plainTextToken;
+             $user = auth::guard('sales')->user();
              $user->api_token= $token;
              $user->save();
              return $this->okApiResponse(new SaleResource($user),__("Sale information"));

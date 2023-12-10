@@ -21,10 +21,10 @@ class AuthController extends Controller
     use ApiResponse;
 
     // login step 1
-    public function login(LoginRequest $request)
+    public function login(Request $request)
     {
        
-         if(Auth::guard('clients')->attempt(['email' =>$request->email ,'password' =>$request->password,'status'=>'1'])){ 
+         if(auth()->guard('clients')->attempt(['email' =>$request->email ,'password' =>$request->password,'status'=>'1'])){ 
              $client = auth()->guard('clients')->user();
              $token = $client->createToken('apiToken')->plainTextToken;
              $client->api_token = $token;
