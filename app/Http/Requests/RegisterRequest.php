@@ -27,9 +27,7 @@ class RegisterRequest extends FormRequest
             "name"            => 'required|string',
             "email"                 => 'required|email|unique:clients,email',
             'password'              => 'required|confirmed|min:8',
-            "district_id"                 => 'required|exists:districts,id',
-            "location"            => 'required|string',
-
+            "district_id"                 => 'required|exists:districts,id'
 
 
 
