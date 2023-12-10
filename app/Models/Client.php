@@ -9,7 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Client extends Model
 {
     use HasFactory, HasApiTokens;
-    protected $fillable = ['name','location','phone','email','province_id','district_id','password','sale_id'];
+    protected $fillable = ['first_name','last_name','lat','lng','phone','email','province_id','district_id','password','sale_id'];
     protected $guard='clients';
 
     public function district(){

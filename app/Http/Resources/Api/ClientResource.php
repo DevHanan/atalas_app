@@ -16,12 +16,15 @@ class ClientResource extends JsonResource
     {
         return [
             "id"=> $this->id,
-            "name"=> $this->name,
+            "first_name"=> $this->first_name,
+            "last_name"=> $this->last_name,
             "phone" => $this->phone,
             "email"=> $this->email ??'',
             "district"=> optional($this->district)->title ??'',
             "province"=> optional($this->province)->title ??'',
-            "api_token"=> $this->api_token ?? ''
+            "api_token"=> $this->api_token ?? '',
+            "lat"=> $this->lat,
+            "lng"=> $this->lng,
         ];
     }
 }

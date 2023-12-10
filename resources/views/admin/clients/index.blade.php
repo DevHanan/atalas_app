@@ -48,7 +48,7 @@
                                   @foreach( $rows as $key => $row )
                                     <tr style="text-align: center;">
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $row->name }}</td>
+                                        <td>{{ $row->first_name }}</td>
                                      <td>{{ optional($row->province)->title  }} -   {{ optional($row->district)->title  }}</td>
                                      <td>  {{  $row->location }}</td>
                                      <td>
