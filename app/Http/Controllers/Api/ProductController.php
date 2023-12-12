@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Rate;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 class ProductController extends Controller
@@ -54,8 +55,8 @@ class ProductController extends Controller
         $rate_exist = Rate::where('product_id',$request->exhibition_id)->where('client_id',auth()->guard('clients')->user()->id)->first();
         if($rate_exist)
         $rate_exist->delete();
-        $rate = Rate::create($request->all());
-                return $this->okApiResponse($rate,__('product rated successfully'));
+         $rate =Rate::create($request->all());
+        return $this->okApiResponse($rate->load('product'),__('product rated successfully'));
 
     }
 
