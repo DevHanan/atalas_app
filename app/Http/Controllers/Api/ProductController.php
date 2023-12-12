@@ -22,7 +22,8 @@ class ProductController extends Controller
 
     public function show(Request $request,$id){
 
-        $data = Product::active()->where('id',$id)->first();
+        $data['product'] = Product::active()->where('id',$id)->first();
+        $data['related'] = Product::where('category_id',$data['product']->category_id)->where('id','!=',$id)->get();
         return $this->okApiResponse($data,__('page loaded'));
     }
 
