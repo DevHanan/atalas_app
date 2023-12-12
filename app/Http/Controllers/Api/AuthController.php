@@ -24,8 +24,8 @@ class AuthController extends Controller
     public function login(Request $request)
     {
        
-         if(auth()->guard('clients')->attempt(['email' =>$request->email ,'password' =>$request->password,'status'=>'1'])){ 
-             $client = auth()->guard('clients')->user();
+         if(auth()->guard('clients-login')->attempt(['email' =>$request->email ,'password' =>$request->password,'status'=>'1'])){ 
+             $client = auth()->guard('clients-login')->user();
              $token = $client->createToken('apiToken')->plainTextToken;
              $client->api_token = $token;
              $client->save();

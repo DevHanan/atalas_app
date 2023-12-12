@@ -44,7 +44,7 @@ return [
             'driver' => 'token',
             'provider' => 'clients',
         ],
-        'clients' => [
+        'clients-login' => [
             'driver' => 'session',
             'provider' => 'clients',
         ],
@@ -52,7 +52,7 @@ return [
             'driver' => 'token',
             'provider' => 'sales',
         ],
-        'sales' => [
+        'sales-login' => [
             'driver' => 'session',
             'provider' => 'sales',
         ],
