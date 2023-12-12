@@ -74,20 +74,14 @@ use  App\Http\Controllers\Api\OrderController;
     Route::middleware(['auth:clients'])->group(function (){
 
 
-
         Route::post('logout',[AuthController::class,'logout']);
         Route::post('delete-account',[ProfileController::class,'deleteaccount']);
-        
-
-        Route::post('product-rate',[ProductController::class,'rate']);
-
-        
+        Route::post('product-rate',[ProductController::class,'rate']);        
         /* Order Route */
         Route::get('order-list',[OrderController::class,'index']);
         Route::get('order/{id}',[OrderController::class,'show']);
         Route::post('order',[OrderController::class,'store']);
 
-        
          Route::get('favourites-list',[FavouriteController::class,'index']);
         Route::get('favourite/{id}',[FavouriteController::class,'favourite']);
         

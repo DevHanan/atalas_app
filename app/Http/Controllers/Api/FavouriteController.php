@@ -14,34 +14,31 @@ class FavouriteController extends Controller
 {
 
     use ApiResponse;
-
-
-    /**
-     * show event data
-     *
-     * @param $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-
+    
+    public function __construct()
+    {
+        $this->middleware('auth:clients');
+    }
 
     public function index(){
-        $IDsList = Favourite::where('user_id',Auth::id())->pluck('product_id')->toArray();
-
-        $products = Product::whereIn('id',$IDsList)->paginate(10);
-
-        return $this->okApiResponse($products,__('Loaded successfully'));
+        $IDsList = Favourite::with(['product'])->where('client_id',auth()->guard('clients')->user()->id)->latest()->get();
+        return $this->okApiResponse($IDsList,__('Loaded successfully'));
     }
     public function favourite($id){
 
-        $favourite = Favourite::where('user_id',Auth::id())->where('product_id',$id)->first();
+        $client_id = auth()->guard('clients')->user()->id;
+        $favourite = Favourite::where('client_id',$client_id)->where('product_id',$id)->first();
 
         if ($favourite){
             $favourite->delete();
+            return $this->okApiResponse('',__('Unfavourite Done successfully'));
+
         }else{
-            Favourite::create(['user_id'=>Auth::id(),'product_id'=>$id]);
+            $obj = Favourite::create(['client_id'=>$client_id,'product_id'=>$id]);
+            return $this->okApiResponse($obj,__('favourite Done successfully'));
+
         }
 
-            return $this->okApiResponse('',__('Done successfully'));
 
 
     }

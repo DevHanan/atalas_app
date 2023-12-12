@@ -76,7 +76,7 @@ class AuthController extends Controller
     public function logout()
     {
         // Revoke a specific user token
-        auth()->user()->tokens()->delete();
+        auth()->guard('clients')->user()->tokens()->delete();
         return $this->okApiResponse([],__("Logged out successfully"));
     }
     
