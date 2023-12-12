@@ -16,7 +16,7 @@ class Product extends Model
     ];
     
     protected $with=['category','section','photos','company','rates'];
-    protected $appends = ['fullPathImg','reviewCount'];
+    protected $appends = ['fullPathImg','reviewCount','isFavourite'];
    
     public function scopeActive($query)
     {
@@ -54,4 +54,12 @@ class Product extends Model
     protected function getreviewCountAttribute (){
         return $this->rates()->count();
     }
+
+    protected function getIsFavouriteAttribute (){
+        if(auth()->guard('clients')->user())
+        return Favourite::where('client_id',auth()->guard('clients')->user()->id)->first() ? 1:0;
+    else return 0;
+        
+    }
+
 }
