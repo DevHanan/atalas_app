@@ -57,7 +57,7 @@ class Product extends Model
 
     protected function getIsFavouriteAttribute (){
         if(auth()->guard('clients')->user())
-        return Favourite::where('client_id',auth()->guard('clients')->user()->id)->first() ? 1:0;
+        return Favourite::where(['client_id'=>auth()->guard('clients')->user()->id,'product_id'=>$this->id])->first() ? 1:0;
     else return 0;
         
     }
