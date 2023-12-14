@@ -67,6 +67,7 @@ use  App\Http\Controllers\Api\OrderController;
 
     Route::get('product/{id}',[ProductController::class,'show']);
     Route::get('product-by-category/{id}',[ProductController::class,'ProductByCategory']);
+    Route::get('product-by-category/{category_id}/{company_id}',[ProductController::class,'ProductByCategoryANDCompany']);
     Route::get('list-recommend-products',[ProductController::class,'recommendProduct']);
     Route::get('list-top-rated-products',[ProductController::class,'topRatedProduct']);
     Route::get('list-best-selling-products',[ProductController::class,'bestSellingProduct']);

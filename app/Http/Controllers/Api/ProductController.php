@@ -21,6 +21,16 @@ class ProductController extends Controller
         return $this->okApiResponse($data,__('product loaded'));
     }
 
+    
+    public function ProductByCategoryANDCompany(Request $request){
+        $order = $request->order == 0 ?"ASC" :"DESC";
+        $data = Product::active()->where(function($q)use($request){
+            if($request->search)
+            $q->where('name', 'like', '%'.$request->search.'%');
+        })->where(['category_id'=>$request->category_id,'company_id'=>$request->company_id])->orderBy('price',$order)->get();
+        return $this->okApiResponse($data,__('product loaded'));
+    }
+
     public function show(Request $request,$id){
 
         $data['product'] = Product::active()->where('id',$id)->first();
