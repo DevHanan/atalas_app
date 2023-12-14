@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\PageResource;
 use App\Models\Page;
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\District;
 use App\Models\Product;
 use App\Models\Province;
@@ -50,6 +51,11 @@ class HomeController extends Controller
   public function city(){
     $cities = Province::where('status','1')->get();
   return $this->okApiResponse($cities,__('Cities loaded')); 
+}
+
+public function companies(){
+  $companies = Company::where('status','1')->get();
+  return $this->okApiResponse($companies,__('Cities loaded'));  
 }
 
 public function cityDistrict($id){
