@@ -55,7 +55,13 @@ class HomeController extends Controller
 
 public function companies(){
   $companies = Company::where('status','1')->get();
-  return $this->okApiResponse($companies,__('Cities loaded'));  
+  return $this->okApiResponse($companies,__('Companies loaded'));  
+}
+public function companyByCategory($id){
+$ids = Product::where('category_id',$id)->pluck('company_id')->ToArray();
+$companies = Company::whereIn('id',$ids)->where('status','1')->get();
+return $this->okApiResponse($companies,__('Companies loaded'));  
+
 }
 
 public function cityDistrict($id){

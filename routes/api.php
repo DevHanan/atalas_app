@@ -44,8 +44,10 @@ use  App\Http\Controllers\Api\OrderController;
     Route::get('about-us',[HomeController::class,'aboutUs']);
     Route::get('terms',[HomeController::class,'terms']);
     Route::get('cities',[HomeController::class,'city']);
-    Route::get('companies',[HomeController::class,'companies']);
     Route::get('district/{city_id}',[HomeController::class,'cityDistrict']);
+    Route::get('companies',[HomeController::class,'companies']);
+    Route::get('companies-by-category/{id}',[HomeController::class,'companyByCategory']);
+
 
 
     
