@@ -46,7 +46,7 @@ use  App\Http\Controllers\Api\OrderController;
     Route::get('cities',[HomeController::class,'city']);
     Route::get('district/{city_id}',[HomeController::class,'cityDistrict']);
     Route::get('companies',[HomeController::class,'companies']);
-    Route::get('companies-by-category/{id}',[HomeController::class,'companyByCategory']);
+    Route::get('companies-by-category/{id?}',[HomeController::class,'companyByCategory']);
 
 
 
@@ -62,12 +62,12 @@ use  App\Http\Controllers\Api\OrderController;
 
    
     Route::get('sections',[HomeController::class,'sections']);
-    Route::get('category-by-section/{id}',[HomeController::class,'CategoryBySection']);
+    Route::get('category-by-section/{id?}',[HomeController::class,'CategoryBySection']);
 
 
     Route::get('product/{id}',[ProductController::class,'show']);
-    Route::get('product-by-category/{id}',[ProductController::class,'ProductByCategory']);
-    Route::get('product-by-category-company/{category_id}/{company_id}',[ProductController::class,'ProductByCategoryANDCompany']);
+    Route::get('product-by-category/{id?}',[ProductController::class,'ProductByCategory']);
+    Route::get('product-by-category-company/{category_id?}/{company_id?}',[ProductController::class,'ProductByCategoryANDCompany']);
     Route::get('list-recommend-products',[ProductController::class,'recommendProduct']);
     Route::get('list-top-rated-products',[ProductController::class,'topRatedProduct']);
     Route::get('list-best-selling-products',[ProductController::class,'bestSellingProduct']);

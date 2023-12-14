@@ -41,9 +41,12 @@ class HomeController extends Controller
         
     }
 
-    public function CategoryBySection($id){
+    public function CategoryBySection(Request $request){
         
-      $data = Category::where('section_id',$id)->get();
+    $data = Category:: where(function($q)use($request){
+        if($request->id)
+        $q->where('section_id',$request->id);
+        })->get();
       return $this->okApiResponse($data,__('data loaded'));
       
   }
@@ -57,8 +60,11 @@ public function companies(){
   $companies = Company::where('status','1')->get();
   return $this->okApiResponse($companies,__('Companies loaded'));  
 }
-public function companyByCategory($id){
-$ids = Product::where('category_id',$id)->pluck('company_id')->ToArray();
+public function companyByCategory(Request $request){
+$ids = Product::where(function($q)use($request){
+if($request->id)
+$q->where('category_id',$request->id);
+})->pluck('company_id')->ToArray();
 $companies = Company::whereIn('id',$ids)->where('status','1')->get();
 return $this->okApiResponse($companies,__('Companies loaded'));  
 

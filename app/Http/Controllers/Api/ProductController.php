@@ -15,9 +15,11 @@ class ProductController extends Controller
     public function ProductByCategory(Request $request){
         $order = $request->order == 0 ?"ASC" :"DESC";
         $data = Product::active()->where(function($q)use($request){
+            if($request->category_id)
+            $q->where('category_id', $request->category_id);
             if($request->search)
             $q->where('name', 'like', '%'.$request->search.'%');
-        })->where('category_id',$request->id)->orderBy('price',$order)->get();
+        })->orderBy('price',$order)->get();
         return $this->okApiResponse($data,__('product loaded'));
     }
 
@@ -27,7 +29,13 @@ class ProductController extends Controller
         $data = Product::active()->where(function($q)use($request){
             if($request->search)
             $q->where('name', 'like', '%'.$request->search.'%');
-        })->where(['category_id'=>$request->category_id,'company_id'=>$request->company_id])->orderBy('price',$order)->get();
+            if($request->category_id)
+            $q->where('category_id', $request->category_id);
+            if($request->company_id)
+            $q->where('category_id', $request->company_id);
+
+
+        })->orderBy('price',$order)->get();
         return $this->okApiResponse($data,__('product loaded'));
     }
 
