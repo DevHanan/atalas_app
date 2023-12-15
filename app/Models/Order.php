@@ -22,6 +22,10 @@ class Order extends Model
     public function client(){
         return $this->belongsTo(Client::class);
     }
+    public function sale(){
+        return $this->belongsTo(Sale::class);
+    }
+    
      public function delivery(){
       
         return $this->belongsTo(Sale::class);
