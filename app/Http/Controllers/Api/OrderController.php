@@ -18,8 +18,11 @@ class OrderController extends Controller
     use ApiResponse;
 
 
-    public function index(){
-        $orders = Order::with('products')->where('client_id',auth()->guard('clients')->user()->id)->latest()->get();
+    public function index(Request $request){
+        $orders = Order::where(function($q)use($request){
+            if($request->status)
+            $q->where('status',$request->status);
+        })->with('products')->where('client_id',auth()->guard('clients')->user()->id)->latest()->get();
         return $this->okApiResponse($orders,__('Loaded successfully'));
     }
     
