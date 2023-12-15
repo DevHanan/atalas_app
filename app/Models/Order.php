@@ -15,16 +15,14 @@ class Order extends Model
     CONST STATUS_FAILED = 5; 
 
     protected $fillable = ['client_id','status','order_date'];
-    protected $with = ['products'];
+    protected $with = ['products','delivery'];
     public function products(){
            return $this->hasMany(\App\Models\OrderProduct::class);
        }
     public function client(){
         return $this->belongsTo(Client::class);
     }
-    public function sale(){
-        return $this->belongsTo(Sale::class);
-    }
+   
     
      public function delivery(){
       
