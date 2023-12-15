@@ -26,6 +26,6 @@ class Order extends Model
     
      public function delivery(){
       
-        return $this->belongsTo(Sale::class);
+        return $this->belongsTo(Sale::class,'sale_id','id');
     }
 }
