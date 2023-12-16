@@ -39,7 +39,6 @@ class OrderController extends Controller
     public function store(Request $request){
         
         $order = Order::create(['client_id'=>auth()->guard('clients')->user()->id , 'status'=>'1' ,'order_date'=>Carbon::today()]);
-       $total = 0;
         foreach($request->products as $product){
             $product = Product::find((int)$product['id']);
         OrderProduct::create(['product_id'=>(int)$product['id'] , 'quantity'=> (int)$product['qty'],
