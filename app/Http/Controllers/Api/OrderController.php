@@ -38,16 +38,16 @@ class OrderController extends Controller
     
     public function store(Request $request){
         
-        $order = Order::create(['client_id'=>auth()->guard('clients')->user()->id , 'status'=>'0' ,'order_date'=>Carbon::today()]);
+        $order = Order::create(['client_id'=>auth()->guard('clients')->user()->id , 'status'=>'1' ,'order_date'=>Carbon::today()]);
        $total = 0;
         foreach($request->products as $product){
             $product = Product::find((int)$product['id']);
         OrderProduct::create(['product_id'=>(int)$product['id'] , 'quantity'=> (int)$product['qty'],
                       'order_id'=>$order->id ,'price'=>$product->price]);
-                      $total += $product->price * (int)$product['qty'];
+                      $order->total =   $order->total + $product->price * (int)$product['qty'];
+                      $order->save();
         }
-        $order->total = $total;
-        $order->save();
+      
         return $this->okApiResponse($order->load('products'),__('Order Created successfully'));
 
     }
