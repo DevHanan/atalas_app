@@ -41,6 +41,7 @@ class OrderController extends Controller
         $order = Order::create(['client_id'=>auth()->guard('clients')->user()->id , 'status'=>'1' ,'order_date'=>Carbon::today()]);
         foreach($request->products as $product){
             $product = Product::find((int)$product['id']);
+            return $product;
         OrderProduct::create(['product_id'=>(int)$product['id'] , 'quantity'=> (int)$product['qty'],
                       'order_id'=>$order->id ,'price'=>$product->price]);
                       $order->total =   $order->total + $product->price * (int)$product['qty'];
