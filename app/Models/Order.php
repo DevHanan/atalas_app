@@ -16,7 +16,7 @@ class Order extends Model
 
     protected $fillable = ['client_id','status','order_date'];
     protected $with = ['products','delivery'];
-    protected $appends = ['statusLael'];
+    protected $appends = ['statusLabel'];
     public function products(){
            return $this->hasMany(\App\Models\OrderProduct::class);
        }
