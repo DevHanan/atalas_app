@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('visits', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
             $table->integer('client_id');
             $table->integer('sale_id');
             $table->text('report');
-            $table->integer('status')->default('1')->comment('0 Inactive, 1 Active');
+            $table->integer('status')->default('1')->comment('0 Finished, 1 New');
             $table->string('visit_date');
             $table->timestamps();
         });

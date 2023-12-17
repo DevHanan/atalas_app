@@ -36,7 +36,7 @@
 						<td class="ui-state-default drag-handler" data-faq="{{$category->id}}">{{$category->id}}</td>
 						<td>{{$category->title}}</td>
                         <td>
-                                            @if( $row->status == 1 )
+                                            @if( $category->status == 1 )
                                             <span class="badge badge-pill badge-success">{{ __('status_active') }}</span>
                                             @else
                                             <span class="badge badge-pill badge-danger">{{ __('status_inactive') }}</span>

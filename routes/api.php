@@ -104,6 +104,10 @@ use  App\Http\Controllers\Api\OrderController;
         Route::post('profile/notification/refresh-notification-token',[NotificationController::class,'refreshToken']);
     });
 
+    Route::middleware(['auth:sales'])->group(function (){
+
+    });
+
  Route::get('search',[HomeController::class,'search']);
 
 

@@ -4,7 +4,12 @@
     
      @include('admin.layouts.common.header_script')
 
-
+<style>
+table.dataTable.nowrap th, table.dataTable.nowrap td {
+    white-space: nowrap;
+    text-align: center;
+}
+</style>
 </head>
 
 <body>
