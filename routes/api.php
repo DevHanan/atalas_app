@@ -24,6 +24,7 @@ use App\Http\Controllers\Api\NotificationController;
 use  App\Http\Controllers\Api\SaleAuthController;
 use  App\Http\Controllers\Api\FavouriteController;
 use  App\Http\Controllers\Api\OrderController;
+use  App\Http\Controllers\Api\ComplainController;
 
 
 
@@ -89,6 +90,9 @@ use  App\Http\Controllers\Api\OrderController;
          Route::get('favourites-list',[FavouriteController::class,'index']);
         Route::get('favourite/{id}',[FavouriteController::class,'favourite']);
         
+
+        Route::get('complain-list',[ComplainController::class,'index']);
+        Route::post('complain',[ComplainController::class,'save']);
         
         Route::get('profile',[ProfileController::class,'index']);
         Route::post('profile',[ProfileController::class,'update']);
