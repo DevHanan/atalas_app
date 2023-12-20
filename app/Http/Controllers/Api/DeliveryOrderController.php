@@ -32,6 +32,19 @@ class DeliveryOrderController extends Controller
         return $this->okApiResponse($data,__('Loaded successfully'));
 
     }
+
+    public function updateStatus(Request $request){
+        $order = order::where(['sale_id'=>auth()->guard('sales')->user()->id,'id'=>$request->id])->first();
+        if(isset($request->status) && $request->status == 3 ) 
+        {
+               $order->update(['status'=>$request->status, 'paid'=>$request->payment , 'remainig_payment'=>$order->total - $request->payment]) ;
+        }
+        else{
+            $order->update(['status'=>$request->status,  'status_reason'=> $request->reason]) ;
+
+        }
+
+    }
     
    
 }
