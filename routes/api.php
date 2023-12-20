@@ -114,7 +114,7 @@ use  App\Http\Controllers\Api\DeliveryBasicController;
         Route::get('list-orders',[DeliveryOrderController::class,'index']);
         Route::get('order/{id}',[DeliveryOrderController::class,'show']);
         Route::get('list-clients',[DeliveryBasicController::class,'listClients']);
-        Route::get('dashoard',[DeliveryBasicController::class,'dashboard']);
+        Route::get('dashboard',[DeliveryBasicController::class,'dashboard']);
 
 
 

@@ -28,9 +28,13 @@ class DeliveryBasicController extends Controller
         return $this->okApiResponse($clients,__('Loaded successfully'));
     }
     
-    public function dashoard($id){
+    public function dashoard(){
 
-        $data['order'] = order::where(['sale_id'=>auth()->guard('sales')->user()->id,'id'=>$id])->first();
+        $id = auth()->guard('sales')->user()->id;
+        $data['total_orders'] = order::where('sale_id',$id)->sum('total');
+        $data['count_orders'] = order::where('sale_id',$id)->count();
+        $ids = Order::where('sale_id',$id)->pluck('client_id')->ToArray();
+        $data['clients'] = Client::whereIn('id',$ids)->count();
         return $this->okApiResponse($data,__('Loaded successfully'));
 
     }
