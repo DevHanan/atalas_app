@@ -34,7 +34,8 @@ class DeliveryOrderController extends Controller
     }
 
     public function updateStatus(Request $request){
-        $order = order::find($request->id);
+        $order = Order::find($request->id);
+
         if($order){
         if(isset($request->status) && $request->status == 3 ) 
         {
