@@ -35,6 +35,7 @@ class DeliveryOrderController extends Controller
 
     public function updateStatus(Request $request){
         $order = order::where(['sale_id'=>auth()->guard('sales')->user()->id,'id'=>$request->id])->first();
+        if($order){
         if(isset($request->status) && $request->status == 3 ) 
         {
                $order->update(['status'=>$request->status, 'paid'=>$request->payment , 'remainig_payment'=>$order->total - $request->payment]) ;
@@ -43,6 +44,11 @@ class DeliveryOrderController extends Controller
             $order->update(['status'=>$request->status,  'status_reason'=> $request->reason]) ;
 
         }
+        return $this->okApiResponse($order,__('Order Updated successfully'));
+
+    }else
+    return $this->notFoundApiResponse([],__('Not Data Found '));
+
 
     }
     
