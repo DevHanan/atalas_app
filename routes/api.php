@@ -15,15 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\ProfileController;
-use App\Http\Controllers\Api\HomeController;
-use App\Http\Controllers\Api\ProductController;
-use App\Http\Controllers\Api\NotificationController;
-use  App\Http\Controllers\Api\SaleAuthController;
-use  App\Http\Controllers\Api\FavouriteController;
-use  App\Http\Controllers\Api\OrderController;
-use  App\Http\Controllers\Api\ComplainController;
+// use App\Http\Controllers\Api\AuthController;
+// use App\Http\Controllers\Api\ProfileController;
+// use App\Http\Controllers\Api\HomeController;
+// use App\Http\Controllers\Api\ProductController;
+// use App\Http\Controllers\Api\NotificationController;
+// use  App\Http\Controllers\Api\SaleAuthController;
+// use  App\Http\Controllers\Api\FavouriteController;
+// use  App\Http\Controllers\Api\OrderController;
+// use  App\Http\Controllers\Api\ComplainController;
 
 
 
@@ -40,6 +40,10 @@ use  App\Http\Controllers\Api\ComplainController;
 */
 
 
+Route::group(
+    [           
+        'namespace' => 'Api'
+        ], function(){
 
 
     Route::get('about-us',[HomeController::class,'aboutUs']);
@@ -107,8 +111,15 @@ use  App\Http\Controllers\Api\ComplainController;
         Route::get('notification/delete-one/{id}',[NotificationController::class,'deleteOne']);
         Route::post('profile/notification/refresh-notification-token',[NotificationController::class,'refreshToken']);
     });
+        });
 
-    Route::middleware(['auth:sales'])->prefix('delivery')->namespace('Api/Delivery')->group(function (){
+Route::group(
+            [           
+                'namespace' => 'Api\Delivery',
+                'prefix' => 'delivery',
+                'middleware'=>'auth:sales'
+            ], function(){
+    
         Route::get('list-orders',[OrderController::class,'index']);
         Route::get('order/{id}',[OrderController::class,'show']);
 
