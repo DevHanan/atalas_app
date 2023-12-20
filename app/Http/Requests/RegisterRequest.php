@@ -26,7 +26,7 @@ class RegisterRequest extends FormRequest
         return [
             "first_name"            => 'required|string',
             "last_name"            => 'required|string',
-
+            "phone"                 => 'unique:clients,phone',
             "email"                 => 'required|email|unique:clients,email',
             'password'              => 'required|confirmed|min:8',
             "district_id"                 => 'required|exists:districts,id'
