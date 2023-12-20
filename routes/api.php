@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProfileController;
-use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\NotificationController;
@@ -25,6 +24,7 @@ use  App\Http\Controllers\Api\SaleAuthController;
 use  App\Http\Controllers\Api\FavouriteController;
 use  App\Http\Controllers\Api\OrderController;
 use  App\Http\Controllers\Api\ComplainController;
+
 
 
 
@@ -108,7 +108,9 @@ use  App\Http\Controllers\Api\ComplainController;
         Route::post('profile/notification/refresh-notification-token',[NotificationController::class,'refreshToken']);
     });
 
-    Route::middleware(['auth:sales'])->group(function (){
+    Route::middleware(['auth:sales'])->prefix('delivery')->namespace('Delivery')->group(function (){
+        Route::get('list-orders',[OrderController::class,'index']);
+        Route::get('order/{id}',[OrderController::class,'show']);
 
     });
 
