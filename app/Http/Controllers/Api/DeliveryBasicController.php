@@ -50,12 +50,6 @@ class DeliveryBasicController extends Controller
 
     }
 
-    public function logout()
-    {
-        // Revoke a specific user token
-        auth()->guard('sales')->user()->tokens()->delete();
-        return $this->okApiResponse([],__("Logged out successfully"));
-    }
     
    
 }
