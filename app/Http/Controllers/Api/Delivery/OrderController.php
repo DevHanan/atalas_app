@@ -19,7 +19,6 @@ class OrderController extends Controller
 
 
     public function index(Request $request){
-        return auth()->guard('sales')->user();
         $orders = Order::where(function($q)use($request){
             if($request->status)
             $q->where('status',$request->status);

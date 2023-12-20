@@ -108,7 +108,7 @@ use  App\Http\Controllers\Api\ComplainController;
         Route::post('profile/notification/refresh-notification-token',[NotificationController::class,'refreshToken']);
     });
 
-    Route::middleware(['auth:sales'])->prefix('delivery')->namespace('Delivery')->group(function (){
+    Route::middleware(['auth:sales'])->prefix('delivery')->namespace('Api/Delivery')->group(function (){
         Route::get('list-orders',[OrderController::class,'index']);
         Route::get('order/{id}',[OrderController::class,'show']);
 
