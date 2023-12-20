@@ -29,11 +29,13 @@ class DeliveryBasicController extends Controller
     }
     
     public function dashboard(){
-
-        $id = auth()->guard('sales')->user()->id;
-        $data['total_orders'] = order::where('sale_id',$id)->sum('total');
-        $data['count_orders'] = order::where('sale_id',$id)->count();
-        $ids = Order::where('sale_id',$id)->pluck('client_id')->ToArray();
+        $login_id = auth()->guard('sales')->user()->id;
+        $delivery_orders = order::where('sale_id',$login_id )->get();
+        $data['total_orders'] = $delivery_orders->sum('total');
+        $data['count_orders'] = $delivery_orders->count();
+        $data['paid'] = $delivery_orders->sum('paid');
+        $data['remaining'] = $delivery_orders->sum('remainig_payment');
+        $ids = Order::where('sale_id',$login_id)->pluck('client_id')->ToArray();
         $data['clients'] = Client::whereIn('id',$ids)->count();
         return $this->okApiResponse($data,__('Loaded successfully'));
 
