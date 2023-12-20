@@ -14,7 +14,7 @@ class Order extends Model
     CONST STATUS_POSTPONE = 'مؤجل'; 
     CONST STATUS_FAILED = 'فشل'; 
 
-    protected $fillable = ['client_id','status','order_date','delivery_date'];
+    protected $fillable = ['client_id','status','order_date','delivery_date','remainig_payment'];
     protected $with = ['products','delivery'];
     protected $appends = ['statusLabel'];
     public function products(){

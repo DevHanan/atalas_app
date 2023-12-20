@@ -47,6 +47,7 @@ class OrderController extends Controller
                       $order->total =   $order->total + $product->price * (int)$item['qty'];
                       $order->save();
         }
+        $order->update(['remainig_payment'=>$order->total]);
       
         return $this->okApiResponse($order->load('products'),__('Order Created successfully'));
 

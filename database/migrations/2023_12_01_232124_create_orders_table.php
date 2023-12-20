@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('client_id');
             $table->integer('sale_id')->nullable();
             $table->double('total');
-            $table->double('paid')->nullable();
-            $table->double('remainig_payment')->nullable();
+            $table->double('paid')->default(0);
+            $table->double('remainig_payment')->default(0);
             $table->integer('status')->default('1')->comment('0 decline, 1 accept');
             $table->timestamps();
         });
