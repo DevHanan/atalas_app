@@ -35,4 +35,4 @@ class FavouriteController extends Controller
 
 
     }
-}
+
