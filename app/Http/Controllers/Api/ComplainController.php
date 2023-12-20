@@ -23,7 +23,7 @@ class ComplainController extends Controller
         $IDsList = Complain::where('client_id',auth()->guard('clients')->user()->id)->latest()->get();
         return $this->okApiResponse($IDsList,__('Loaded successfully'));
     }
-    public function save($id){
+    public function save(){
 
         $client_id = auth()->guard('clients')->user()->id;
        
