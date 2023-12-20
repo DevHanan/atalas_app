@@ -20,7 +20,7 @@ return new class extends Migration
             $table->double('total');
             $table->double('paid')->default(0);
             $table->double('remainig_payment')->default(0);
-            $table->text('reason')->nullable();
+            $table->text('status_reason')->nullable();
             $table->integer('status')->default('1')->comment('1 New, 2 STATUS_SHIPMENT , 3 STATUS_DELIVERED ,4 STATUS_POSTPONE ,5 Failed');
             $table->timestamps();
         });
