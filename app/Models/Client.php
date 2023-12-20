@@ -20,4 +20,8 @@ class Client extends Authenticatable
       
         return $this->belongsTo(Province::class);
     }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
 }
