@@ -28,7 +28,7 @@ class DeliveryOrderController extends Controller
     
     public function show($id){
 
-        $data['order'] = order::where(['sale_id'=>auth()->guard('sales-login')->user()->id,'id'=>$id])->first();
+        $data['order'] = order::where(['sale_id'=>auth()->guard('sales')->user()->id,'id'=>$id])->first();
         return $this->okApiResponse($data,__('Loaded successfully'));
 
     }
