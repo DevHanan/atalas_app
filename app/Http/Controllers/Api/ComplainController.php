@@ -9,7 +9,7 @@ use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class FavouriteController extends Controller
+class ComplainController extends Controller
 {
 
     use ApiResponse;
