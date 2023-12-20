@@ -22,7 +22,7 @@ class OrderController extends Controller
         $orders = Order::where(function($q)use($request){
             if($request->status)
             $q->where('status',$request->status);
-        })->with('products')->where('sale_id',auth()->guard('sales-login')->user()->id)->latest()->get();
+        })->with('products')->where('sale_id',auth()->guard('sales')->user()->id)->latest()->get();
         return $this->okApiResponse($orders,__('Loaded successfully'));
     }
     
