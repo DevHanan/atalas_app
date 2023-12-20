@@ -11,6 +11,7 @@ class Client extends Authenticatable
 {
     use HasFactory, HasApiTokens;
     protected $fillable = ['first_name','last_name','lat','lng','phone','email','province_id','district_id','password','sale_id'];
+    protected $hidden =['api_token','password'];
     protected $guard='clients';
 
     public function district(){
