@@ -117,7 +117,7 @@ use  App\Http\Controllers\Api\DeliveryBasicController;
         Route::get('client/{id}',[DeliveryBasicController::class,'showClient']);
         Route::get('dashboard',[DeliveryBasicController::class,'dashboard']);
         Route::post('logout',[SaleAuthController::class,'logout']);
-        Route::get('update-order-status',[DeliveryOrderController::class,'updateStatus']);
+        Route::post('update-order-status',[DeliveryOrderController::class,'updateStatus']);
 
 
        });
