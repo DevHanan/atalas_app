@@ -34,8 +34,7 @@ class DeliveryOrderController extends Controller
     }
 
     public function updateStatus(Request $request){
-        $order = Order::find($request->id);
-return $request->all();
+        $order = order::where(['sale_id'=>auth()->guard('sales')->user()->id,'id'=>$request->id])->first();
         if($order){
         if(isset($request->status) && $request->status == 3 ) 
         {
