@@ -116,6 +116,8 @@ use  App\Http\Controllers\Api\DeliveryBasicController;
         Route::get('list-clients',[DeliveryBasicController::class,'listClients']);
         Route::get('client/{id}',[DeliveryBasicController::class,'showClient']);
         Route::get('dashboard',[DeliveryBasicController::class,'dashboard']);
+        Route::get('logout',[SaleAuthController::class,'logout']);
+
 
 
 
