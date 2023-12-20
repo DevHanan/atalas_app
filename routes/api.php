@@ -25,6 +25,7 @@ use  App\Http\Controllers\Api\FavouriteController;
 use  App\Http\Controllers\Api\OrderController;
 use  App\Http\Controllers\Api\ComplainController;
 use  App\Http\Controllers\Api\DeliveryOrderController;
+use  App\Http\Controllers\Api\DeliveryBasicController;
 
 
 
@@ -112,6 +113,10 @@ use  App\Http\Controllers\Api\DeliveryOrderController;
     Route::middleware(['auth:sales'])->prefix('delivery')->group(function (){
         Route::get('list-orders',[DeliveryOrderController::class,'index']);
         Route::get('order/{id}',[DeliveryOrderController::class,'show']);
+        Route::get('list-clients',[DeliveryBasicController::class,'listClients']);
+        Route::get('dashoard',[DeliveryBasicController::class,'dashboard']);
+
+
 
     });
 
