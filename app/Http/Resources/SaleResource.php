@@ -22,7 +22,6 @@ class SaleResource extends JsonResource
             "email"=> $this->email ??'',
             "address"=> $this->address ??'',
             "district_id"=> $this->district_id ??'',
-            'type' => $this->type,
             "image"=> $this->image ? url($this->image): '',
             "api_token"=> $this->api_token ?? ''
         ];

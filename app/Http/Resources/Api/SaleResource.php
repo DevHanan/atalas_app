@@ -19,6 +19,7 @@ class SaleResource extends JsonResource
             "name"=> $this->name,
             "phone" => $this->phone,
             "email"=> $this->email ??'',
+            'type' => $this->type,
             "district"=> optional($this->district)->title ??'',
             "province"=> optional($this->province)->title ??'',
             "api_token"=> $this->api_token ?? ''
