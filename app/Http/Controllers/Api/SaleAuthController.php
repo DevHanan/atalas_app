@@ -29,9 +29,7 @@ class SaleAuthController extends Controller
              $user = auth::guard('sales-login')->user();
              $user->api_token= $token;
              $user->save();
-             return $this->okApiResponse(new SaleResource($user),__("Sale information"));
-
-            return $this->okApiResponse($user,__("User information"));
+            return $this->okApiResponse(new SaleResource($user),__("User information"));
                 } 
                 else{ 
                    return $this->errorApiResponse([],401,__('invaild data')); 
