@@ -25,13 +25,13 @@ class VisitController extends Controller
     
     public function show($id){
 
-        $data['order'] = Visit::where(['sale_id'=>auth()->guard('sales')->user()->id,'id'=>$id])->first();
-        return $this->okApiResponse($data,__('Loaded successfully'));
+        $visit = Visit::where(['sale_id'=>auth()->guard('sales')->user()->id,'id'=>$id])->first();
+        return $this->okApiResponse($visit,__('Loaded successfully'));
 
     }
 
     public function store(Request $request){
-        $request->merge(['sale_id'=> auth()->guard('sales')->user()->id]);
+        $request->merge(['sale_id'=> auth()->guard('sales')->user()->id ,'status'=>'0']);
         $visit = Visit::create($request->all());
         return $this->okApiResponse($visit,__('Visit Created successfully'));
 
