@@ -31,7 +31,7 @@ class VisitController extends Controller
     }
 
     public function store(Request $request){
-        $request->merge(['sale_id'=> auth()->guard('sales')->user()->id ,'status'=>'0']);
+        $request->merge(['sale_id'=> auth()->guard('sales')->user()->id ,'status'=>'0','code'=>random_int('1','10000000')]);
         $visit = Visit::create($request->all());
         return $this->okApiResponse($visit,__('Visit Created successfully'));
 
