@@ -111,8 +111,9 @@ use  App\Http\Controllers\Api\VisitController;
         Route::post('profile/notification/refresh-notification-token',[NotificationController::class,'refreshToken']);
     });
 
-    Route::middleware(['auth:sales'])->prefix('delivery')->group(function (){
+    Route::middleware(['auth:sales'])->group(function (){
         // Delivery Routes 
+        Route::group(['prefix'=>'delivery','as'=>'delivery.'], function(){
         Route::get('list-orders',[DeliveryOrderController::class,'index']);
         Route::get('order/{id}',[DeliveryOrderController::class,'show']);
         Route::get('list-clients',[DeliveryBasicController::class,'listClients']);
@@ -120,13 +121,14 @@ use  App\Http\Controllers\Api\VisitController;
         Route::get('dashboard',[DeliveryBasicController::class,'dashboard']);
         Route::post('logout',[SaleAuthController::class,'logout']);
         Route::post('update-order-status',[DeliveryOrderController::class,'updateStatus']);
-
+        });
 
         // Sales Routes 
-
+        Route::group(['prefix'=>'sale','as'=>'sale.'], function(){
         Route::get('list-visits',[VisitController::class,'index']);
         Route::get('visit/{id}',[VisitController::class,'show']);
         Route::post('visit',[VisitController::class,'store']);
+    });
 
 
 
