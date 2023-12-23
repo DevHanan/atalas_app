@@ -27,6 +27,7 @@ use  App\Http\Controllers\Api\ComplainController;
 use  App\Http\Controllers\Api\DeliveryOrderController;
 use  App\Http\Controllers\Api\DeliveryBasicController;
 use  App\Http\Controllers\Api\VisitController;
+use  App\Http\Controllers\Api\SaleController;
 
 
 
@@ -128,6 +129,9 @@ use  App\Http\Controllers\Api\VisitController;
         Route::get('list-visits',[VisitController::class,'index']);
         Route::get('visit/{id}',[VisitController::class,'show']);
         Route::post('visit',[VisitController::class,'store']);
+        Route::get('list-clients',[SaleController::class,'listClients']);
+        Route::get('client/{id}',[SaleController::class,'showClient']);
+        Route::get('dashboard',[SaleController::class,'dashboard']);
     });
 
 
