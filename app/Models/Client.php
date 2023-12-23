@@ -25,4 +25,7 @@ class Client extends Authenticatable
     public function orders(){
         return $this->hasMany(Order::class);
     }
+    public function visits(){
+        return $this->hasMany(Visit::class);
+    }
 }
