@@ -82,7 +82,7 @@ class SaleController extends Controller
         ]);
         
 
-        $request->merge(['password '=> Bcrypt($request->password) , 'type'=>'1']);
+        $request->merge(['password '=> Hash::make($request->password) , 'type'=>'1']);
        Sale::create($request->all());
         Toastr::success(__('msg_created_successfully'), __('msg_success'));
 
@@ -183,7 +183,7 @@ class SaleController extends Controller
 
         // Update Data
         $saleman = Sale::findOrFail($request->id);
-        $saleman->password = Bcrypt($request->password);
+        $saleman->password = Hash::make($request->password);
         $saleman->save();
 
         Toastr::success(__('msg_updated_successfully'), __('msg_success'));
