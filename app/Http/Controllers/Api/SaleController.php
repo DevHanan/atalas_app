@@ -38,13 +38,11 @@ class SaleController extends Controller
     
     public function dashboard(){
         $login_id = auth()->guard('sales')->user()->id;
-        $delivery_orders = Visit::where('sale_id',$login_id )->get();
-        $data['total_orders'] = $delivery_orders->sum('total');
-        $data['count_orders'] = $delivery_orders->count();
-        $data['paid'] = $delivery_orders->sum('paid');
-        $data['remaining'] = $delivery_orders->sum('remainig_payment');
-        $ids = Order::where('sale_id',$login_id)->pluck('client_id')->ToArray();
-        $data['clients'] = Client::whereIn('id',$ids)->count();
+        $visits = Visit::where('sale_id',$login_id )->get();
+        $data['visit_count'] = $visits->count();
+        $data['current_month_visit'] = $visits->count();
+        $ids = Visit::where('sale_id',$login_id)->pluck('client_id')->ToArray();
+        $data['client_count'] = Client::whereIn('id',$ids)->count();
         return $this->okApiResponse($data,__('Loaded successfully'));
 
     }

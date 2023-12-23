@@ -10,13 +10,12 @@ class Visit extends Model
     use HasFactory;
     protected $table = 'visits';
     protected $fillable = ['client_id','sale_id','status','code','visit_date','report'];
-    protected $with = ['client'];
     public function client(){
         return $this->belongsTo(Client::class);
     }
      public function sale(){
       
-        return $this->belongsTo(Sale::class);
+        return $this->belongsTo(Sale::class,'sale_id');
     }
 
 }
