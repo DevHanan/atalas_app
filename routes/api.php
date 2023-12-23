@@ -26,6 +26,7 @@ use  App\Http\Controllers\Api\OrderController;
 use  App\Http\Controllers\Api\ComplainController;
 use  App\Http\Controllers\Api\DeliveryOrderController;
 use  App\Http\Controllers\Api\DeliveryBasicController;
+use  App\Http\Controllers\Api\VisitController;
 
 
 
@@ -111,6 +112,7 @@ use  App\Http\Controllers\Api\DeliveryBasicController;
     });
 
     Route::middleware(['auth:sales'])->prefix('delivery')->group(function (){
+        // Delivery Routes 
         Route::get('list-orders',[DeliveryOrderController::class,'index']);
         Route::get('order/{id}',[DeliveryOrderController::class,'show']);
         Route::get('list-clients',[DeliveryBasicController::class,'listClients']);
@@ -118,6 +120,14 @@ use  App\Http\Controllers\Api\DeliveryBasicController;
         Route::get('dashboard',[DeliveryBasicController::class,'dashboard']);
         Route::post('logout',[SaleAuthController::class,'logout']);
         Route::post('update-order-status',[DeliveryOrderController::class,'updateStatus']);
+
+
+        // Sales Routes 
+
+        Route::get('list-visits',[VisitController::class,'index']);
+        Route::get('visit/{id}',[VisitController::class,'show']);
+        Route::post('visit',[VisitController::class,'store']);
+
 
 
        });
