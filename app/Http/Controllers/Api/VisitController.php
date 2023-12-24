@@ -19,7 +19,7 @@ class VisitController extends Controller
         $visits = Visit::where(function($q)use($request){
             if($request->status)
             $q->where('status',$request->status);
-        })->where('sale_id',auth()->guard('sales')->user()->id)->with('clients')->latest()->get();
+        })->where('sale_id',auth()->guard('sales')->user()->id)->latest()->get();
         return $this->okApiResponse( VisitResource::collection($visits),__('Loaded successfully'));
     }
     
