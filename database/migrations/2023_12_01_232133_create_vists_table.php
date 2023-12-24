@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('report');
             $table->integer('status')->default('1')->comment('0 Finished, 1 New');
             $table->string('visit_date');
+            $table->string('visit_day');
             $table->timestamps();
         });
     }
