@@ -26,10 +26,10 @@ class Client extends Authenticatable
     }
 
     protected function getProvinceNameAttribute(){
-        return $this->province->name;
+        return optional($this->province)->name;
     }
     protected function getDistrictNameAttribute(){
-        return $this->district->name;
+        return optional($this->district)->name;
     }
     public function orders(){
         return $this->hasMany(Order::class);
