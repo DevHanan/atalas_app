@@ -22,7 +22,7 @@ class ClientResource extends JsonResource
             "email"=> $this->email ??'',
             "district"=> optional($this->district)->title ??'',
             "province"=> optional($this->province)->title ??'',
-            "api_token"=> $this->api_token ?? '',
+            'api_token' => $this->when(auth()->guard('client')->check(), $this->api_token),
             "lat"=> $this->lat,
             "lng"=> $this->lng,
         ];
