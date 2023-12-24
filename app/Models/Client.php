@@ -12,8 +12,10 @@ class Client extends Authenticatable
     use HasFactory, HasApiTokens;
     protected $fillable = ['first_name','last_name','lat','lng','phone','email','province_id','district_id','password','sale_id'];
     protected $hidden =['api_token','password'];
-    protected $with = ['province','district'];
+    // protected $with = ['province','district'];
     protected $guard='clients';
+    protected $appends = ['provinceName','districtName'];
+
 
     public function district(){
         return $this->belongsTo(District::class);
@@ -23,6 +25,12 @@ class Client extends Authenticatable
         return $this->belongsTo(Province::class);
     }
 
+    protected function getProvinceNameAttribute(){
+        return $this->province->name;
+    }
+    protected function getDistrictNameAttribute(){
+        return $this->district->name;
+    }
     public function orders(){
         return $this->hasMany(Order::class);
     }
