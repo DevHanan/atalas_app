@@ -19,7 +19,7 @@ class DeliveryOrderController extends Controller
 
 
     public function index(Request $request){
-        $orders = Order::where(function($q)use($request){
+        $orders = Order::with('client')->where(function($q)use($request){
             if($request->status)
             $q->where('status',$request->status);
         })->with('products')->where('sale_id',auth()->guard('sales')->user()->id)->latest()->get();
@@ -28,7 +28,7 @@ class DeliveryOrderController extends Controller
     
     public function show($id){
 
-        $data['order'] = order::where(['sale_id'=>auth()->guard('sales')->user()->id,'id'=>$id])->first();
+        $data['order'] = order::with('client')->where(['sale_id'=>auth()->guard('sales')->user()->id,'id'=>$id])->first();
         return $this->okApiResponse($data,__('Loaded successfully'));
 
     }
