@@ -28,13 +28,12 @@ class DeliveryBasicController extends Controller
         return $this->okApiResponse($clients,__('Loaded successfully'));
     }
     public function showClient($id){
-        $client = Client::with('orders')->where('id',$id)->withCount([
-            'orders', 
-            'orders as orders_count' => function ($query) {
-                $query->where('sale_id', auth()->guard('sales')->user()->id);
-            }])
-            ->get();
-        return $this->okApiResponse($client,__('Loaded successfully'));
+        $data['client'] = Client::find($id);
+        $client_orders = Order::where('client_id',$id)->get();
+        $data['order_number'] = $client_orders->count();
+        $data['order_total'] = $client_orders->sum('total');
+        $data['remaining'] = $client_orders->sum('remainig_payment');
+        return $this->okApiResponse($data,__('Loaded successfully'));
     }
     
     public function dashboard(){
