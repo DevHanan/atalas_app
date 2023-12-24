@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\ClientResource;
 use App\Models\Client;
 use App\Models\Visit;
 use App\Traits\ApiResponse;
@@ -27,13 +28,13 @@ class SaleController extends Controller
         return $this->okApiResponse($clients,__('Loaded successfully'));
     }
     public function showClient($id){
-        $client = Client::with('visits')->where('id',$id)->withCount([
-            'visits', 
-            'visits as visits_count' => function ($query) {
-                $query->where('sale_id', auth()->guard('sales')->user()->id);
-            }])
-            ->get();
-        return $this->okApiResponse($client,__('Loaded successfully'));
+        $data['client'] =  new ClientResource(Client::find($id));
+        $data['visit_count'] = Visit::where('sale_id',auth()->guard('sales')->user()->id)->count();
+        $data['month_visit_count'] = Visit::where('sale_id',auth()->guard('sales')->user()->id)->whereMonth('visit_date', Carbon::now()->month)
+        ->count();
+
+
+        return $this->okApiResponse($data,__('Loaded successfully'));
     }
     
     public function dashboard(){
