@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ClientResource;
 use App\Models\Client;
+use App\Models\Order;
 use App\Models\Visit;
 use App\Traits\ApiResponse;
 use Carbon\Carbon;
@@ -32,6 +33,11 @@ class SaleController extends Controller
         $data['visit_count'] = Visit::where('sale_id',auth()->guard('sales')->user()->id)->count();
         $data['month_visit_count'] = Visit::where('sale_id',auth()->guard('sales')->user()->id)->whereMonth('visit_date', Carbon::now()->month)
         ->count();
+        $client_orders = Order::where('client_id',$id)->get();
+        $data['order_number'] = $client_orders->count();
+        $data['order_total'] = $client_orders->sum('total');
+        $data['paid'] = $client_orders->sum('paid');
+        $data['remaining'] = $client_orders->sum('remainig_payment');
 
 
         return $this->okApiResponse($data,__('Loaded successfully'));
