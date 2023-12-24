@@ -32,6 +32,7 @@ class DeliveryBasicController extends Controller
         $client_orders = Order::where('client_id',$id)->get();
         $data['order_number'] = $client_orders->count();
         $data['order_total'] = $client_orders->sum('total');
+        $data['paid'] = $client_orders->sum('paid');
         $data['remaining'] = $client_orders->sum('remainig_payment');
         return $this->okApiResponse($data,__('Loaded successfully'));
     }
