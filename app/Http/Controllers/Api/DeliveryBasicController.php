@@ -5,12 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Order;
-use App\Models\OrderProduct;
 use App\Traits\ApiResponse;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
+use App\Http\Resources\Api\CustomCLientResource;
 class DeliveryBasicController extends Controller
 {
 
@@ -34,7 +31,7 @@ class DeliveryBasicController extends Controller
         $data['order_total'] = $client_orders->sum('total');
         $data['paid'] = $client_orders->sum('paid');
         $data['remaining'] = $client_orders->sum('remainig_payment');
-        return $this->okApiResponse($data,__('Loaded successfully'));
+        return $this->okApiResponse(new CustomCLientResource($data),__('Loaded successfully'));
     }
     
     public function dashboard(){
