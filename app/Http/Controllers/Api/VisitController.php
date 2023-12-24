@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-
+use App\Http\Resources\Api\VisitResource;
 use App\Models\Visit;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -19,14 +19,14 @@ class VisitController extends Controller
         $visits = Visit::where(function($q)use($request){
             if($request->status)
             $q->where('status',$request->status);
-        })->where('sale_id',auth()->guard('sales')->user()->id)->latest()->get();
+        })->where('sale_id',auth()->guard('sales')->user()->id)->with('clients')->latest()->get();
         return $this->okApiResponse($visits,__('Loaded successfully'));
     }
     
     public function show($id){
 
         $visit = Visit::where(['sale_id'=>auth()->guard('sales')->user()->id,'id'=>$id])->first();
-        return $this->okApiResponse($visit,__('Loaded successfully'));
+        return $this->okApiResponse(new VisitResource($visit),__('Loaded successfully'));
 
     }
 
