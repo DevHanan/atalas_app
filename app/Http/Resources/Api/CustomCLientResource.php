@@ -25,10 +25,10 @@ class CustomCLientResource extends JsonResource
             "api_token"=> $this['client']->api_token ?? '',
             "lat"=> $this['client']->lat,
             "lng"=> $this['client']->lng,
-            'order_number' => $this->order_number,
-            'order_total'  => $this->order_total,
-            'paid'=> $this->paid,
-            'remaining' => $this->remaining
+            'order_total'  => $this['order_total'],
+            'paid'=> $this['paid'],
+            'remaining' => $this['remaining'],
+            'order_number'=> $this['order_number']
         ];
     }
 }
