@@ -14,7 +14,7 @@ class Client extends Authenticatable
     protected $hidden =['api_token','password'];
     // protected $with = ['province','district'];
     protected $guard='clients';
-    protected $appends = ['provinceName','districtName'];
+    protected $appends = ['provinc','district'];
 
 
     public function district(){
@@ -25,10 +25,10 @@ class Client extends Authenticatable
         return $this->belongsTo(Province::class);
     }
 
-    protected function getProvinceNameAttribute(){
+    protected function getProvinceAttribute(){
         return optional($this->province)->name;
     }
-    protected function getDistrictNameAttribute(){
+    protected function getDistrictAttribute(){
         return optional($this->district)->name;
     }
     public function orders(){
