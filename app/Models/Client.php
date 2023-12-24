@@ -14,7 +14,7 @@ class Client extends Authenticatable
     protected $hidden =['api_token','password'];
     // protected $with = ['province','district'];
     protected $guard='clients';
-    protected $appends = ['province','district'];
+    protected $appends = ['Province','district'];
 
 
     public function district(){
