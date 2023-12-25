@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Sale;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 use Carbon\Carbon;
@@ -57,7 +58,8 @@ class DashboardController extends Controller
                        ->get();
       
       // For the chart, we'll convert the result to arrays
-      $data['productIds'] = $data['requiredProducts'] ->pluck('name')->toArray();
+      $ids = $data['requiredProducts'] ->pluck('product_id')->toArray();
+      $data['productIds'] = Product::whereIn('id',$ids)->pluck('name')->ToArray();
       $data['productCounts'] =  $data['requiredProducts'] ->pluck('total')->toArray();
 
 

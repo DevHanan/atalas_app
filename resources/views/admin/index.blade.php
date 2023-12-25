@@ -136,7 +136,7 @@ const myChart = new Chart(ctx, {
             },
             title: {
                 display: true,
-                text: 'Most Required Products (<?php echo $currentMonth . "/" . $currentYear; ?>)'
+                text: 'المنتجات الاكثر كلبا (<?php echo $currentMonth . "/" . $currentYear; ?>)'
             }
         }
     },
