@@ -222,7 +222,7 @@ const mostOrderedClientobj = new Chart(mostOrderedClient, {
             },
             title: {
                 display: true,
-                text: 'المنتجات الاكثر طلبا خلال العام (<?php echo  $currentYear; ?>)'
+                text: 'العملاء الاكثر طلبا خلال العام (<?php echo  $currentYear; ?>)'
             }
         }
     },
