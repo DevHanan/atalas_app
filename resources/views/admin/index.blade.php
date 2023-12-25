@@ -89,7 +89,7 @@
                 <canvas id="myChart" height="220px"></canvas>
             </div>
             <div class="col-12 col-md-6 col-xl-6 mt-5">
-                <canvas id="line-chartcanvas" height="250px"></canvas>
+                <canvas id="MostRequiredproductInYear" height="220px"></canvas>
             </div>
         </div>
         <!-- [ Main Content ] end -->
@@ -136,7 +136,46 @@ const myChart = new Chart(ctx, {
             },
             title: {
                 display: true,
-                text: 'المنتجات الاكثر كلبا (<?php echo $currentMonth . "/" . $currentYear; ?>)'
+                text: 'المنتجات الاكثر طلبا خلال الشهر (<?php echo $currentMonth . "/" . $currentYear; ?>)'
+            }
+        }
+    },
+});
+
+const MostRequiredproductInYearChart = document.getElementById('MostRequiredproductInYear').getContext('2d');
+const MostRequiredproductInYearChartoj = new Chart(MostRequiredproductInYearChart, {
+    type: 'bar',
+    data: {
+        labels: <?php echo json_encode($productIdsinyear); ?>,
+        datasets: [{
+            label: 'Most Required Products in Current Year',
+            data: <?php echo json_encode($productCountsinyear); ?>,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'المنتجات الاكثر طلبا خلال العام (<?php echo  $currentYear; ?>)'
             }
         }
     },

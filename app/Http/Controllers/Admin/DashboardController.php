@@ -45,6 +45,7 @@ class DashboardController extends Controller
       $data['total_orders'] = Order::sum('total');
       $data['total_remaining'] = Order::sum('remainig_payment');
 
+      /** Product Most reuired in current month */
       $data['currentMonth'] = date('m');
       $data['currentYear'] = date('Y');
       
@@ -62,6 +63,20 @@ class DashboardController extends Controller
       $data['productIds'] = Product::whereIn('id',$ids)->pluck('name')->ToArray();
       $data['productCounts'] =  $data['requiredProducts'] ->pluck('total')->toArray();
 
+   /** Product Most reuired in current year */
+
+            $data['requiredProductsinYear'] = DB::table('order_products')
+            ->select('product_id', DB::raw('COUNT(*) as total'))
+            ->whereYear('created_at', '=', $data['currentYear'])
+            ->groupBy('product_id')
+            ->orderBy('total', 'desc')
+            ->limit(5)
+            ->get();
+
+// For the chart, we'll convert the result to arrays
+$ids = $data['requiredProductsinYear'] ->pluck('product_id')->toArray();
+$data['productIdsinyear'] = Product::whereIn('id',$ids)->pluck('name')->ToArray();
+$data['productCountsinyear'] =  $data['requiredProductsinYear'] ->pluck('total')->toArray();
 
       return view($this->view.'.index', $data);
    }
