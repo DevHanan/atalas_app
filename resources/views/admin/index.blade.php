@@ -193,10 +193,10 @@ const mostOrderedClient = document.getElementById('mostOrderedClient').getContex
 const mostOrderedClientobj = new Chart(mostOrderedClient, {
     type: 'bar',
     data: {
-        labels: <?php echo $orders->pluck('client.name') ?>,
+        labels: <?php echo $ordersChart->pluck('client.name') ?>,
         datasets: [{
             label: 'Most Required Products in Current Year',
-            data: <?php echo $orders->pluck('total') ?>,
+            data: <?php echo $ordersChart->pluck('total') ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
