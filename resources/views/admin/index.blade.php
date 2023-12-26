@@ -145,6 +145,8 @@
         }
     },
 });
+</script>
+<script type="text/javascript">
 
 const MostRequiredproductInYearChart = document.getElementById('MostRequiredproductInYear').getContext('2d');
 const MostRequiredproductInYearChartoj = new Chart(MostRequiredproductInYearChart, {
@@ -184,8 +186,9 @@ const MostRequiredproductInYearChartoj = new Chart(MostRequiredproductInYearChar
         }
     },
 });
+</script>
 
-
+<script type="text/javascript">
 
 const mostOrderedClientcanvas = document.getElementById('mostOrderedClient').getContext('2d');
 const mostOrderedClient = new Chart(mostOrderedClientcanvas, {
@@ -193,7 +196,7 @@ const mostOrderedClient = new Chart(mostOrderedClientcanvas, {
     data: {
         labels: <?php echo $ordersChart->pluck('client.name') ?>,
         datasets: [{
-            label: 'Most requested customers',
+            label: 'العملا الأكثر طلبا',
             data: <?php echo $ordersChart->pluck('total_orders') ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -220,7 +223,7 @@ const mostOrderedClient = new Chart(mostOrderedClientcanvas, {
             },
             title: {
                 display: true,
-                text: 'العملاء الاكثر طلبا خلال العام (<?php echo  $currentYear; ?>)'
+                text: 'العملاء الاكثر طلبا  '
             }
         }
     },
