@@ -113,7 +113,7 @@
     data: {
         labels: <?php echo json_encode($productIds); ?>,
         datasets: [{
-            label: 'Most Required Products',
+            label: ' ',
             data: <?php echo json_encode($productCounts); ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -154,7 +154,7 @@ const MostRequiredproductInYearChartoj = new Chart(MostRequiredproductInYearChar
     data: {
         labels: <?php echo json_encode($productIdsinyear); ?>,
         datasets: [{
-            label: 'Most Required Products in Current Year',
+            label: ' ',
             data: <?php echo json_encode($productCountsinyear); ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
