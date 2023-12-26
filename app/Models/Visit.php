@@ -9,7 +9,7 @@ class Visit extends Model
 {
     use HasFactory;
     protected $table = 'visits';
-    protected $fillable = ['client_id','sale_id','status','code','visit_date','report','visit_day'];
+    protected $fillable = ['client_id','sale_id','status','code','visit_date','report','visit_day','lat','lng'];
     public function client(){
         return $this->belongsTo(Client::class);
     }

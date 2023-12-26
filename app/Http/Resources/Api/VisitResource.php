@@ -21,6 +21,8 @@ class VisitResource extends JsonResource
             "report"=> $this->report,
             "code" => $this->code,
             "status" => $this->status,
+            'lat' => $this->lat,
+            'lng' => $this->lng,
             "client"=> new ClientResource($this->client)
         ];
     }
