@@ -195,7 +195,7 @@ const mostOrderedClientobj = new Chart(mostOrderedClient, {
     data: {
         labels: <?php echo $ordersChart->pluck('client.name') ?>,
         datasets: [{
-            label: 'Most Required Products in Current Year',
+            label: 'Most requested customers',
             data: <?php echo $ordersChart->pluck('total') ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

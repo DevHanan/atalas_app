@@ -79,11 +79,12 @@ $data['productIdsinyear'] = Product::whereIn('id',$ids)->pluck('name')->ToArray(
 $data['productCountsinyear'] =  $data['requiredProductsinYear'] ->pluck('total')->toArray();
 
 
-$data['ordersChart'] = Order::select('client_id', DB::raw('COUNT(*) as total'))
+$data['ordersChart'] = Order::select('client_id', DB::raw('COUNT(*) as ClientNumberRequest'))
                         ->groupBy('client_id')
                         ->orderBy('total', 'desc')
                         ->take(5)
                         ->get();
+                        return $data['ordersChart'];
 
       return view($this->view.'.index', $data);
    }
