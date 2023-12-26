@@ -189,8 +189,8 @@ const MostRequiredproductInYearChartoj = new Chart(MostRequiredproductInYearChar
 
 
 
-const mostOrderedClient = document.getElementById('mostOrderedClient').getContext('2d');
-const mostOrderedClientobj = new Chart(mostOrderedClient, {
+const mostOrderedClientcanvas = document.getElementById('mostOrderedClient').getContext('2d');
+const mostOrderedClientobj = new Chart(mostOrderedClientcanvas, {
     type: 'bar',
     data: {
         labels: <?php echo $ordersChart->pluck('client.name') ?>,

@@ -85,7 +85,6 @@ $data['ordersChart']  = Order::select('client_id', DB::raw('count(*) as total_or
 ->orderBy('total_orders', 'desc')
 ->take(5)
 ->get();
-return $data['ordersChart'];
 
       return view($this->view.'.index', $data);
    }
