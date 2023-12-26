@@ -105,8 +105,6 @@
 @endsection
 @section('page_js')
 <script src="{{ asset('dashboard/plugins/chart-chartjs/js/chart.min.js') }}"></script>
-
-
 <script type="text/javascript">
       "use strict";
       const ctx = document.getElementById('myChart').getContext('2d');
@@ -190,7 +188,7 @@ const MostRequiredproductInYearChartoj = new Chart(MostRequiredproductInYearChar
 
 
 const mostOrderedClientcanvas = document.getElementById('mostOrderedClient').getContext('2d');
-const mostOrderedClientobj = new Chart(mostOrderedClientcanvas, {
+const mostOrderedClient = new Chart(mostOrderedClientcanvas, {
     type: 'bar',
     data: {
         labels: <?php echo $ordersChart->pluck('client.name') ?>,
