@@ -78,13 +78,13 @@ $ids = $data['requiredProductsinYear'] ->pluck('product_id')->toArray();
 $data['productIdsinyear'] = Product::whereIn('id',$ids)->pluck('name')->ToArray();
 $data['productCountsinyear'] =  $data['requiredProductsinYear'] ->pluck('total')->toArray();
 
+/** Most Required Client Chart */
 
-$data['ordersChart'] = Order::with('client')->select('client.name as Name','client_id', DB::raw('COUNT(*) as ClientNumberRequest'))
-                        ->groupBy('client_id')
-                        ->orderBy('ClientNumberRequest', 'desc')
-                        ->take(5)
-                        ->get();
-                        return $data['ordersChart'];
+$data['ordersChart']  = Order::select('client_id', DB::raw('count(*) as total_orders'))
+->groupBy('client_id')
+->orderBy('total_orders', 'desc')
+->take(5)
+->get();
 
       return view($this->view.'.index', $data);
    }
