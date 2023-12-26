@@ -80,11 +80,13 @@ $data['productCountsinyear'] =  $data['requiredProductsinYear'] ->pluck('total')
 
 /** Most Required Client Chart */
 
-$data['ordersChart']  = Order::select('client_id', DB::raw('count(*) as total_orders'))
+$clients  = Order::select('client_id', DB::raw('count(*) as total_orders'))
 ->groupBy('client_id')
 ->orderBy('total_orders', 'desc')
 ->take(5)
 ->get();
+$data['clientsLabel'] = $clients->pluck('client.name');
+$data['clientsTotal'] = $clients->pluck('total_orders');
 
       return view($this->view.'.index', $data);
    }

@@ -194,10 +194,10 @@ const mostOrderedClientcanvas = document.getElementById('mostOrderedClient').get
 const mostOrderedClient = new Chart(mostOrderedClientcanvas, {
     type: 'bar',
     data: {
-        labels: <?php echo $ordersChart->pluck('client.name') ?>,
+        labels: <?php echo json_encode($clientsLabel); ?>,
         datasets: [{
             label: 'العملا الأكثر طلبا',
-            data: <?php echo $ordersChart->pluck('total_orders') ?>,
+            data: <?php echo json_encode($clientsTotal); ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
