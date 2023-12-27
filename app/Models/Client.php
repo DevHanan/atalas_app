@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Client extends Authenticatable
 {
     use HasFactory, HasApiTokens;
-    protected $fillable = ['first_name','last_name','lat','lng','phone','email','province_id','district_id','password','sale_id'];
+    protected $fillable = ['first_name','last_name','lat','lng','phone','email','province_id','district_id','password','sale_id','activity_name'];
     protected $hidden =['api_token','password'];
     protected $with = ['province','district'];
     protected $guard='clients';

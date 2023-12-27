@@ -25,6 +25,8 @@ class ClientResource extends JsonResource
             'api_token' => $this->when(auth()->guard('clients')->check(), $this->api_token),
             "lat"=> $this->lat,
             "lng"=> $this->lng,
+            'activity_name' => $this->activity_name,
+            'join_date' => DATE($this->created_at)
         ];
     }
 }
