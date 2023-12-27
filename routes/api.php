@@ -131,6 +131,7 @@ use  App\Http\Controllers\Api\SaleController;
         Route::post('visit',[VisitController::class,'store']);
         Route::get('list-clients',[SaleController::class,'listClients']);
         Route::get('client/{id}',[SaleController::class,'showClient']);
+        Route::post('add-client',[SaleController::class,'addClient']);
         Route::get('dashboard',[SaleController::class,'dashboard']);
     });
 
