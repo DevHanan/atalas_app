@@ -31,7 +31,7 @@ class DeliveryBasicController extends Controller
         $data['order_total'] = $client_orders->sum('total');
         $data['paid'] = $client_orders->sum('paid');
         $data['remaining'] = $client_orders->sum('remainig_payment');
-        return $this->okApiResponse(new CustomCLientResource($data),__('Loaded successfully'));
+        return $this->okApiResponse($data,__('Loaded successfully'));
     }
     
     public function dashboard(){

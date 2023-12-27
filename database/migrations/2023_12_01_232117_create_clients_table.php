@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('status')->default('1')->comment('0 Inactive, 1 Active');
             $table->string('phone');
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->text('api_token')->nullable();
             $table->text('activity_name')->nullable();
             $table->timestamps();
