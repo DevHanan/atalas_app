@@ -26,7 +26,7 @@ class ClientResource extends JsonResource
             "lat"=> $this->lat,
             "lng"=> $this->lng,
             'activity_name' => $this->activity_name,
-            'join_date' => DATE($this->created_at)
+            'join_date' => $this->created_at->format('m/d/Y')
         ];
     }
 }
