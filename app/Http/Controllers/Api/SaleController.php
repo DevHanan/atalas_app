@@ -56,7 +56,7 @@ class SaleController extends Controller
 
     public function addClient(Request $request){
 
-        $request->merge(['password '=> Hash::make($request->password) , 'type'=>'1']);
+        $request->merge(['password '=> Hash::make($request->password) , 'type'=>'1','sale_id'=>auth()->guard('sales')->user()->id]);
       $data = Client::create($request->all());
        return $this->okApiResponse($data,__('Loaded successfully'));
 
