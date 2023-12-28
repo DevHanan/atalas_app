@@ -254,6 +254,11 @@ table.dataTable.nowrap th, table.dataTable.nowrap td {
     });
 
 </script>
+<style>
+    td {
+    text-align: justify !important;
+}
+</style>
 
 </body>
 </html>
