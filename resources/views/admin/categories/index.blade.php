@@ -53,7 +53,7 @@
 									<span class="fas fa-wrench "></span> {{__('modal_edit')}}
 								</span>
 							</a>
-                            <button type="button" class="btn btn-icon btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $row->id }}">
+                            <button type="button" class="btn btn-icon btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$row->id }}">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                             <!-- Include Delete modal -->

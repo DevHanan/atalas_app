@@ -12,10 +12,11 @@ class CategoryController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('permission:categories-create', ['only' => ['create','store']]);
-        // $this->middleware('permission:categories-read',   ['only' => ['show', 'index']]);
-        // $this->middleware('permission:categories-update',   ['only' => ['edit','update']]);
-        // $this->middleware('permission:categories-delete',   ['only' => ['delete']]);
+        $this->title = 'categories';
+        $this->route = 'admin.categories';
+        $this->view = 'admin.categories';
+        $this->path = 'categories';
+        $this->access = 'categories';
     }
     /**
      * Display a listing of the resource.
@@ -24,15 +25,17 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $title = trans('backend.list_categories');
-        $categories =  Category::where(function($q)use($request){
+        $data['route'] = $this->route;
+        $datap['title'] = trans('backend.list_categories');
+        $data['categories'] =  Category::where(function($q)use($request){
             if($request->id!=null)
                 $q->where('id',$request->id);
             if($request->q!=null)
                 $q->where('title','LIKE','%'.$request->q.'%');
         })->orderBy('id','DESC')->paginate();
 
-        return view('admin.categories.index',compact('categories','title'));
+        return view($this->view.'.index', $data);
+
     }
 
     /**
