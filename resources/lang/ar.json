@@ -706,5 +706,7 @@
     "tab_profile_info": "بيانات الصفحة الشخصية",
     "tab_profile_update": "تحديث الحساب",
     "tab_transcript": "Transcript",
-    "tab_transfer_info": "Transfer Info"
+    "tab_transfer_info": "Transfer Info",
+    "status_appear" :"ظاهر",
+    "status_hidden" :"مخفى"
 }

@@ -34,9 +34,7 @@
 						<td>{{$slider->id}}</td>
 						<td>{{$slider->title}}</td>
 							<td>
-							@if($slider->status==1)
-							{{ __('status_active') }}							@else
-							{{ __('status_inactive') }}							@endif
+							{{ $slider->statusLabel }}						
 						</td>
 						<td><img src="{{asset($slider->image)}}" style="width:40px"></td>
 

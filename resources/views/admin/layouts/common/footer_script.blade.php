@@ -116,7 +116,11 @@
         'use strict';
         $(document).ready(function() {
             // [ Zero-configuration ] start
-            $('#basic-table').DataTable();
+            $('#basic-table').DataTable({
+                language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/ar.json',
+    },
+            });
             $('#basic-table2').DataTable();
 
             // [ HTML5-Export ] start

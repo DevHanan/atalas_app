@@ -52,8 +52,8 @@
                             <label for="status">{{ __('status') }} <span>*</span></label>
                             <select class="form-control" name="status" id="status" required>
                                 <option value="">{{ __('select') }}</option>
-                                <option value="1"  @if($slider->status == '1')  selected @endif>{{ __('status_active') }}</option>
-                                  <option value="0"  @if($slider->status == '0')  selected @endif>{{ __('status_inactive') }}</option>
+                                <option value="1"  @if($slider->status == '1')  selected @endif>{{ __('status_appear') }}</option>
+                                  <option value="0"  @if($slider->status == '0')  selected @endif>{{ __('status_hidden') }}</option>
                               
                             </select>
 

@@ -5,7 +5,7 @@
 
         @if(isset($setting))
         <!-- App Title -->
-        <title>@yield('title') | {{ $setting->meta_title ?? '' }}</title>
+        <title>@yield('title') | {{ $setting->title ?? '' }}</title>
         
        
 
@@ -53,4 +53,5 @@
 th.sorting {
     text-align: right !important;
 }
+th.dt-center, td.dt-center { text-align: center; }
         </style>
