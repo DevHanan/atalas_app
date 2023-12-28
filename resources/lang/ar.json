@@ -77,9 +77,9 @@
     "btn_back": "رجوع",
     "btn_cancel": "Cancel",
     "btn_change": "Change",
-    "btn_close": "إغلاق",
+    "btn_close": "إلغاء",
     "btn_complete": "Complete",
-    "btn_confirm": "Confirm",
+    "btn_confirm": "حذف",
     "btn_create": "إضافة",
     "btn_delete": "حذف",
     "btn_download": "Download",
@@ -466,7 +466,6 @@
     "gender_other": "Other",
     "home": "Home",
     "image_size": "Best Resolution Height- :height PX, Width- :width PX",
-    "jobRequestCount": "طلبات الوظائف ",
     "list": "عرض",
     "field_exhibition" : "المعرض",
     "marital_status_divorced": "Divorced",
@@ -477,8 +476,8 @@
     "marks_given": "Marks Already Submitted. You Can Edit Record",
     "marks_not_given": "Marks Wasn't Submitted Yet.",
     "modal_add": "Add",
-    "modal_are_you_sure": "Are You Sure?",
-    "modal_delete_warning": "You will not be able to recover this!",
+    "modal_are_you_sure": "   تأكيد عملية الحذف",
+    "modal_delete_warning": "",
     "modal_edit": "تعديل",
     "modal_view": "عرض",
     "module_academic": "Academic|Academic",
@@ -708,5 +707,5 @@
     "tab_transcript": "Transcript",
     "tab_transfer_info": "Transfer Info",
     "status_appear" :"ظاهر",
-    "status_hidden" :"مخفى"
+    "status_hidden" :"مختفى"
 }

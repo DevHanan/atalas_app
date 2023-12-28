@@ -8,7 +8,7 @@
             <div class="modal-content">
                 <div class="modal-body text-center">
                     <h5 class="modal-title" id="deleteModalLabel">{{ __('modal_are_you_sure') }}</h5>
-                    <p class="text-danger mt-2">{{ __('modal_delete_warning') }}</p>
+                    <!-- <p class="text-danger mt-2">{{ __('modal_delete_warning') }}</p> -->
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-danger">{{ __('btn_confirm') }}</button>

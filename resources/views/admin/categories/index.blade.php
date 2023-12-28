@@ -53,12 +53,11 @@
 									<span class="fas fa-wrench "></span> {{__('modal_edit')}}
 								</span>
 							</a>
-							<form method="POST" action="{{url('admin/categories/destroy')}}" class="d-inline-block">@csrf @method("DELETE")
-							<input type="hidden" name="id" value="{{$category->id}}">
-								<button class="btn  btn-outline-danger btn-sm font-1 mx-1" onclick="var result = confirm('هل أنت متأكد من عملية الحذف ؟');if(result){}else{event.preventDefault()}">
-									<span class="fas fa-trash "></span> {{ __('btn_delete') }}
-								</button>
-							</form>
+                            <button type="button" class="btn btn-icon btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $category->id }}">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                            <!-- Include Delete modal -->
+                                            @include('admin.layouts.inc.delete')
 						</td>
 					</tr>
 					@endforeach
