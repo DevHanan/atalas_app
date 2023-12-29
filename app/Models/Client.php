@@ -13,6 +13,8 @@ class Client extends Authenticatable
     protected $fillable = ['first_name','last_name','lat','lng','phone','email','province_id','district_id','password','sale_id','activity_name'];
     protected $hidden =['api_token','password'];
     protected $with = ['province','district'];
+    protected $appends = ['name'];
+
     protected $guard='clients';
 
     public function district(){
@@ -23,6 +25,9 @@ class Client extends Authenticatable
         return $this->belongsTo(Province::class);
     }
 
+    protected  function getNameAttribute (){
+        return $this->first_name . ' '. $this->last_name;
+    }
     public function orders(){
         return $this->hasMany(Order::class);
     }

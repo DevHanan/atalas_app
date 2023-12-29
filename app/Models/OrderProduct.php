@@ -11,7 +11,12 @@ class OrderProduct extends Model
 
     use HasFactory;
     protected $with = ['product'];
+    protected $appends = ['productName'];
     public function product(){
            return $this->belongsTo(Product::class);
        }
+       protected  function getProductNameAttribute(){
+        return $this->product->name;
+       }
+
 }
