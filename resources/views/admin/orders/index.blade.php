@@ -32,8 +32,9 @@
                                     <tr>
                                                                                 <th>#</th>
 
-                                        <th>تاريخ الطلب</th>
-                                       
+                                        <th>تاريخ إنشاء</th>
+                                        <th>تاريخ التسليم</th>
+
                                         <th>العميل</th>
                                         <th>مندوب التوصيل</th>     
                                         <th>  إجمالى الطلب</th>     
@@ -48,16 +49,14 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
 
-                                        <td>{{ $row->order_date }}</td>
+                                        <td>{{ $row->order_date->format('d/m/Y') }}</td>
+                                        <td>{{ $row->delivery_date->format('d/m/Y') }}</td>
+
                                          <td>{{ optional($row->client)->name }}</td>
                                          <td>{{ optional($row->delivery)->name }}</td>
                                          <td>{{ $row->total }}</td>
                                          <td>
-                                            @if( $row->status == 1 )
-                                            <span class="badge badge-pill badge-success">مفعلة</span>
-                                            @else
-                                            <span class="badge badge-pill badge-danger"> غير مفعلة </span>
-                                            @endif
+                                           {{ $row->StatusLabel }}
                                         </td>
 
 
