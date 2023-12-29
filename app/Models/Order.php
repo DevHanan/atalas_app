@@ -17,6 +17,10 @@ class Order extends Model
     protected $fillable = ['client_id','status','order_date','delivery_date','remainig_payment','status_reason'];
     protected $with = ['products','delivery'];
     protected $appends = ['statusLabel'];
+    protected $casts = [
+        'delivery_date' => 'datetime',
+        'order_date' =>'datetime'
+    ];
     public function products(){
            return $this->hasMany(\App\Models\OrderProduct::class);
        }
