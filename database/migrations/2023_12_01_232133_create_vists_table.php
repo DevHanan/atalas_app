@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('status')->default('1')->comment('0 Finished, 1 New');
             $table->string('visit_date');
             $table->string('visit_day');
+            $table->string('visit_time');
             $table->string('lat');
             $table->string('lng');
             $table->timestamps();

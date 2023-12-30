@@ -32,10 +32,10 @@
                                     <tr>
                                                                                 <th>#</th>
 
-                                        <th>تاريخ الزيارة</th>
-                                       
+                                        <th>تاريخ </th>
+                                        <th>وقت الزيارة</th>
+                                       <th>الحالة</th>
                                         <th>العميل</th>
-                                        <th>تقرير الزيارة</th>
                                         <th>المندوب</th>                                        
                                         <th>{{ __('field_action') }}</th>
 
@@ -48,8 +48,10 @@
                                         <td>{{ $loop->iteration }}</td>
 
                                         <td>{{ $row->visit_date }}</td>
+                                        <td>{{ $row->visit_time }}</td>
+                                        <td>{{ $row->statusLabel }}</td>
+
                                          <td>{{ optional($row->client)->name }}</td>
-                                         <td>{{ $row->report }}</td>
                                          <td>{{ optional($row->sale)->name }}</td>
 
                                                

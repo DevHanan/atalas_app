@@ -41,9 +41,7 @@
                             <select class="form-control" name="section_id" id="section_id" >
                                 <option value="">{{ __('select') }}</option>
                                 @foreach( $categories as $cat )
-                                @if($category->id != $cat->id)
                                 <option value="{{ $cat->id }}" @if( $cat->id == $category->section_id ) selected @endif>{{ $cat->title }}</option>
-                                @endif
                                 @endforeach
                             </select>
 

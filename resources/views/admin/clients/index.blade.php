@@ -36,6 +36,9 @@
                                                                                 <th>#</th>
 
                                         <th>{{ __('field_name') }}</th>
+                                        <th>{{ __('field_order_number') }}</th>
+                                        <th>{{ __('field_order_total') }}</th>
+                                        <th>{{ __('field_Indebtedness') }}</th>
                                         <th>{{ __('field_province') }}</th>
                                         <th>{{ __('field_location') }}</th>
                                         <th>{{ __('field_status') }}</th>
@@ -49,6 +52,11 @@
                                     <tr style="text-align: center;">
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $row->first_name }}</td>
+                                        <td>{{ $row->orders()->count() }}</td>
+
+                                        <td>{{ $row->orders()->sum('total') }}</td>
+                                        <td>{{ $row->orders()->sum('remainig_payment') }}</td>
+
                                      <td>{{ optional($row->province)->title  }} -   {{ optional($row->district)->title  }}</td>
                                      <td>  {{  $row->location }}</td>
                                      <td>

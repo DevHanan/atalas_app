@@ -19,6 +19,9 @@
                     </h5>
                   
                 </div>
+                <div class="card-block">
+                            <a href="{{ route($route.'.index') }}" class="btn btn-rounded btn-info">{{ __('btn_back') }}</a>
+                        </div>
                 <div class="card-body">
                     <!-- Form Start -->
                     <div class="form-group">
@@ -208,7 +211,7 @@
                     
                     <div class="form-group col-md-12">
                             <label for="about">{{ __('field_about') }}</label>
-                            <textarea class="form-control texteditor" name="note" id="description">{!! $row->description !!}</textarea>
+                            <textarea class="form-control texteditor" name="description" id="description">{!! $row->description !!}</textarea>
 
                             <div class="invalid-feedback">
                               {{ __('required_field') }} {{ __('field_about') }}

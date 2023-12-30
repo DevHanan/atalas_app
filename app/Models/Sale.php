@@ -11,7 +11,7 @@ use App\Models\Passport\PersonalAccessToken;
 class Sale extends Authenticatable
 {
     use HasApiTokens, HasFactory;
-    protected $fillable = ['name','phone','email','province_id','district_id','password'];
+    protected $fillable = ['name','phone','email','province_id','district_id','password','type'];
     protected $hidden = ['password'];
     protected $guard='sales';
 

@@ -76,7 +76,13 @@ class VisitController extends Controller
      */
     public function show($id)
    {
-    return Visit::find($id);
+    $data['title']     = $this->title;
+    $data['route']     = $this->route;
+    $data['view']      = $this->view;
+    $data['path']      = $this->path;
+    $data['access']    = $this->access;
+     $data['row']  = Visit::find($id);
+    return view($this->view.'.show', $data);
    }
 
     /**

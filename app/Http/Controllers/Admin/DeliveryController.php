@@ -133,7 +133,7 @@ class DeliveryController extends Controller
 
         
         if($request->password){
-            $request->merge(['password '=> Hash::make($request->password) , 'type'=>'1']);
+            $request->merge(['password '=> Hash::make($request->password) , 'type'=>'2']);
             Sale::where('id',$id)->update($request->all());
         }
         else

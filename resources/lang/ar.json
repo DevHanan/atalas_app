@@ -683,7 +683,6 @@
     "status_open": "Open",
     "status_paid": "Paid",
     "status_passed": "Passed",
-    "status_pending": "Pending",
     "status_rejected": "Rejected",
     "status_returned": "Returned",
     "status_submitted": "Submitted",
@@ -707,5 +706,11 @@
     "tab_transcript": "Transcript",
     "tab_transfer_info": "Transfer Info",
     "status_appear" :"ظاهر",
-    "status_hidden" :"مختفى"
+    "status_hidden" :"مختفى",
+    "status_pending" :"معلقة",
+    "status_confirmed" :"مؤكدة",
+    "password_confirmation" :"تأكيد كلمة المرور",
+    "field_order_number" :"عدد الطلبات",
+    "field_order_total" :"قيمة الطلبات",
+    "field_Indebtedness" :"المديونية"
 }

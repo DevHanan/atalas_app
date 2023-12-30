@@ -15,7 +15,9 @@
                     </div>
                     <div class="card-header">
                          <a href="{{ route($route.'.create') }}" class="btn btn-rounded btn-info"> إضافة جديد</a>
-                    </div>
+                         <a href="{{ route($route.'.index') }}" class="btn btn-rounded btn-info">{{ __('btn_refresh') }}</a>
+
+                        </div>
                     <div class="card-block">
                         <!-- [ Data table ] start -->
                         <div class="table-responsive">

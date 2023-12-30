@@ -143,6 +143,7 @@ ul.timeline > li.active:before {
                                 <div class="top-status">
                                     <h5>رقم الطلب# {{  $row->id }}</h5>
                                     <h5>حالة الطلب# {{  $row->statusLabel }}</h5>
+                                    <h5> مندوب التوصيل  # {{ optional($row->sale)->name}}</h5>
 
                                    
                                 </div>

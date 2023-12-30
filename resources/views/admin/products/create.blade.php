@@ -97,8 +97,8 @@
 
 الحالة                      </label>
                         <select class="form-control" name="status" id="status">
-                            <option value="1" @if( old('status') == 1 ) selected @endif> نعم </option>
-                            <option value="0" @if( old('status')  == 0 ) selected @endif>لا </option>
+                            <option value="1" @if( old('status') == 1 ) selected @endif> {{__('status_active')}} </option>
+                            <option value="0" @if( old('status')  == 0 ) selected @endif>{{__('status_inactive')}} </option>
                         </select>
                     </div>
                     

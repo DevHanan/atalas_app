@@ -17,6 +17,7 @@ class VisitResource extends JsonResource
         return [
             "id"=> $this->id,
             "visit_date"=> $this->visit_date,
+            "visit_time"=> $this->visit_time,
             "visit_day"=> $this->visit_day,
             "report"=> $this->report,
             "code" => $this->code,

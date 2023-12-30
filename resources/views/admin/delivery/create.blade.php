@@ -63,7 +63,7 @@
 
 
                             <div class="form-group col-md-6">
-                                <label for="password_confirmation">{{ __('field_password') }} <span>*</span></label>
+                                <label for="password_confirmation">{{ __('password_confirmation') }} <span>*</span></label>
                                 <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" value="{{ old('password_confirmation') }}" required>
 
                                 <div class="invalid-feedback">

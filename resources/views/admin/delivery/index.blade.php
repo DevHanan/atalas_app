@@ -4,8 +4,8 @@
 
 <!-- Start Content-->
 <style>
-    .steps.clearfix{
-        display:none;
+    .steps.clearfix {
+        display: none;
     }
 </style>
 <div class="main-body">
@@ -33,39 +33,39 @@
                             <table id="basic-table" class="display table nowrap table-striped table-hover" style="width:100%">
                                 <thead>
                                     <tr>
-                                                                                <th>#</th>
+                                        <th>#</th>
 
                                         <th>{{ __('field_name') }}</th>
-                                       
+
                                         <th>{{ __('field_email') }}</th>
-                    
+
                                         <th>{{ __('field_province') }}</th>
                                         <th>{{ __('field_district') }}</th>
-                                       <th>{{ __('field_phone') }}</th>
+                                        <th>{{ __('field_phone') }}</th>
                                         <th>{{ __('field_status') }}</th>
-                                        
+
                                         <th>{{ __('field_action') }}</th>
 
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  @foreach( $rows as $key => $row )
+                                    @foreach( $rows as $key => $row )
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
 
                                         <td>{{ $row->name }}</td>
-                                                                                <td>{{ $row->email }}</td>
-                                                                                                                            <td>{{ $row->phone }}</td>
+                                        <td>{{ $row->email }}</td>
 
-                                                                                                                            <td> {{  optional($row->province)->title}}</td>                                                                       <td>{{ $row->phone }}</td>
+                                        <td> {{ optional($row->province)->title}}</td>
 
-<td> {{  optional($row->district)->title}}</td>   
+                                        <td> {{ optional($row->district)->title}}</td>
+                                        <td>{{ $row->phone }}</td>
 
 
                                         <td>
-                                            
-                                            
+
+
                                             @if( $row->status == 1 )
                                             <span class="badge badge-pill badge-success">{{ __('status_active') }}</span>
                                             @else
@@ -73,20 +73,20 @@
                                             @endif
                                         </td>
                                         <td>
-                                               
- 
-                                               
-                                                            
-     
+
+
+
+
+
 
                                             @if( $row->status == 1 )
                                             <a href="{{ route($route.'.status', $row->id) }}" class="btn btn-icon btn-danger btn-sm"><i class="fas fa-times"></i></a>
                                             @else
                                             <a href="{{ route($route.'.status', $row->id) }}" class="btn btn-icon btn-success btn-sm"><i class="fas fa-check"></i></a>
                                             @endif
-                                           
- 
-                                            
+
+
+
                                             <a href="{{ route($route.'.edit', $row->id) }}" class="btn btn-icon btn-primary btn-sm">
                                                 <i class="far fa-edit"></i>
                                             </a>
@@ -96,18 +96,18 @@
                                             </button>
                                             <!-- Include Delete modal -->
                                             @include('admin.layouts.inc.delete')
-                                             
+
                                             <button class="btn btn-icon btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#changePasswordModal-{{ $row->id }}">
-                                            <i class="fas fa-key"></i>
+                                                <i class="fas fa-key"></i>
                                             </button>
 
                                             <!-- Include Password Change modal -->
                                             @include('admin.sales.password-change')
-                                            
-                                            
+
+
                                         </td>
                                     </tr>
-                                  @endforeach
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
