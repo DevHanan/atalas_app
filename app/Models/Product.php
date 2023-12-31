@@ -61,5 +61,9 @@ class Product extends Model
     else return 0;
         
     }
+    public function saleUnits()
+{
+    return $this->hasMany(SaleUnit::class);
+}
 
 }

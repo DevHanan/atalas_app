@@ -35,6 +35,11 @@
                             الشركات
 
                         </span> </a></li>
+                        <li class="{{ Request::is('admin/units*') ? 'active' : '' }}"><a href="{{ url('admin/units') }}" class="">
+                        <span class="pcoded-mtext">
+                            الوحدات
+
+                        </span> </a></li>
 
                 <li class="{{ Request::is('admin/products*') ? 'active' : '' }}"><a href="{{ url('admin/products') }}" class="">
                         <span class="pcoded-mtext">

@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\DeliveryController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\VisitController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\UnitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,7 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->prefix('admin')->group(f
     Route::resource('pages',PageController::class);
     Route::resource('sections',SectionController::class);
     Route::resource('categories',CategoryController::class);
+    Route::resource('units',UnitController::class);
     Route::resource('sliders',SliderController::class);
 
 
