@@ -12,10 +12,11 @@ class Product extends Model
     protected $fillable = [
         'name', 'company_id', 'section_id', 'category_id', 'status',
         'price','discount','supplier_price','gomalla_price','carton_price','quantity',
-        'max_order_quantity','description','best_seller','highest_rated','recommend'
+        'max_order_quantity','description','best_seller','highest_rated','recommend',
+        'sale_unit_id','purchase_unit_id'
     ];
     
-    protected $with=['category','section','photos','company','rates'];
+    protected $with=['category','section','photos','company','rates','saleUnits'];
     protected $appends = ['fullPathImg','reviewCount','isFavourite'];
    
     public function scopeActive($query)

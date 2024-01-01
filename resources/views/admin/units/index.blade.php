@@ -24,7 +24,7 @@
                                     <tr>
                                     <th>#</th>
             						<th>إسم</th>
-                                    <th> العدد الجزئى</th>
+                                    <th> الوحدة الأساسية </th>
             						<th>{{ __('control') }}</th>
                                     </tr>
                                 </thead>
@@ -33,7 +33,9 @@
 					<tr >
 						<td class="ui-state-default drag-handler" data-faq="{{$row->id}}">{{$row->id}}</td>
 						<td>{{$row->name}}</td>
-                        <td> {{ $row->number }}</td>
+                        <td> 
+
+                         {{ optional($row->parent)->name}} / {{ $row->number }} </td>
                     
 <td>
 

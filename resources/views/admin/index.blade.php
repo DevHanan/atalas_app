@@ -78,13 +78,14 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-12 col-md-12 col-xl-12">
                 <canvas id="lineChart" height="100px"></canvas>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
+            
             <div class="col-12 col-md-6 col-xl-6 mt-5">
                 <canvas id="myChart" height="220px"></canvas>
             </div>

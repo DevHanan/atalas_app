@@ -88,6 +88,14 @@ $clients  = Order::select('client_id', DB::raw('count(*) as total_orders'))
 $data['clientsLabel'] = $clients->pluck('client.name');
 $data['clientsTotal'] = $clients->pluck('total_orders');
 
+$chart4  = Order::select('client_id', DB::raw('sum("remainig_payment") as total_remainig_payment'))
+->groupBy('client_id')
+->orderBy('total_remainig_payment', 'desc')
+->take(5)
+->get();
+$data['char4label'] = $chart4->pluck('client.name');
+$data['char4Total'] = $chart4->pluck('total_remainig_payment');
+
       return view($this->view.'.index', $data);
    }
 }

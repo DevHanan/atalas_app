@@ -30,6 +30,8 @@ return new class extends Migration
             $table->boolean('best_seller')->default('0');
             $table->boolean('highest_rated')->default('0');
             $table->boolean('recommend')->default('0');
+            $table->integer('sale_unit_id');
+            $table->integer('purchase_unit_id');
             $table->timestamps();
         });
     }
