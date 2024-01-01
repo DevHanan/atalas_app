@@ -22,8 +22,9 @@
                             <table id="basic-table" class="display table nowrap table-striped table-hover" style="width:100%">
                                 <thead>
                                     <tr>
-                                                    	<th>#</th>
+                                    <th>#</th>
             						<th>إسم</th>
+                                    <th> العدد الجزئى</th>
             						<th>{{ __('control') }}</th>
                                     </tr>
                                 </thead>
@@ -32,6 +33,7 @@
 					<tr >
 						<td class="ui-state-default drag-handler" data-faq="{{$row->id}}">{{$row->id}}</td>
 						<td>{{$row->name}}</td>
+                        <td> {{ $row->number }}</td>
                     
 <td>
 

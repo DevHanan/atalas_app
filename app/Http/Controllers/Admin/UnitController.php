@@ -61,6 +61,8 @@ class UnitController extends Controller
                     ]);
         $unit = SaleUnit::create([
             "name"=>$request->name,
+            'number' => $request->number,
+            'sale_unit_id' => $request->sale_unit_id
         ]);
           
         toastr()->success(__('utils/toastr.unit_store_success_message'), __('utils/toastr.successful_process_message'));
@@ -107,6 +109,8 @@ class UnitController extends Controller
         ]);
         $unit->update([
             "name"=>$request->name,
+            'number' => $request->number,
+            'sale_unit_id' => $request->sale_unit_id
             ]);
         
         toastr()->success(__('utils/toastr.unit_update_success_message'), __('utils/toastr.successful_process_message'));

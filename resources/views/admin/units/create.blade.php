@@ -34,7 +34,29 @@
                               {{ __('required_field') }} إسم الوحدة
                             </div>
                         </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="number">العدد الجزئى  <span>*</span></label>
+                            <input type="number" class="form-control" name="number" id="number" value="{{ old('number') }}" required>
+
+                            <div class="invalid-feedback">
+                              {{ __('required_field') }} العدد 
+                            </div>
+                        </div>
                         
+                        <div class="form-group col-md-12">
+                            <label for="sale_unit_id">الاساسى <span>*</span></label>
+                            <select class="form-control select2" name="sale_unit_id" id="sale_unit_id" required>
+                                <option value="">{{ __('select') }}</option>
+                                @foreach( $units as $unit )
+                                <option value="{{ $unit->id }}" @if(old('sale_unit_id') == $unit->id) selected @endif>{{ $unit->name }}</option>
+                                @endforeach
+                            </select>
+
+                            <div class="invalid-feedback">
+                              {{ __('required_field') }} {{ __('field_unit') }}
+                            </div>
+                        </div>
 
                         
                     
