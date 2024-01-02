@@ -64,7 +64,7 @@ class Product extends Model
     }
     public function saleUnits()
 {
-    return $this->hasMany(SaleUnit::class);
+    return $this->belongsToMany(SaleUnit::class);
 }
 
 }

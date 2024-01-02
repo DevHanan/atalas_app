@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductSaleUnit extends Model
 {
-    protected $table = 'product_sales_unit';
+    protected $table = 'product_sale_unit';
     protected $fillable = ['product_id','sale_unit_id'];
     protected $with = ['product','saleUnit'];
     public function product(){
