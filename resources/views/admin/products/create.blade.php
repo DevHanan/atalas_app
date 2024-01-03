@@ -99,6 +99,8 @@
                             </div>
                         </div>
 
+                        
+
                             <div class="form-group">
                                 <label for="price" class="form-label">
                                      السعر
@@ -220,6 +222,25 @@
                         </div>
                        
                         </div>
+
+                        <div class="form-group col-md-12">
+
+    <table id="dynamicTable">
+        <tr>
+            <td><select name="units[]"><option>إخترالوحدة</option>
+            @foreach( $units as $unit )
+                                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                @endforeach
+          </select></td>
+          <td><input type="text" name="unitqty[]"></td>
+          <td><input type="text" name="unitPrice[]"></td>
+            <td><button type="button" onclick="addRow()">إضافة</button></td>
+        </tr>
+    </table>
+ 
+                        </div>
+
+
                      
                         <div class="card-footer">
                             <button type="submit" class="btn btn-success">{{ __('btn_save') }}</button>
@@ -233,4 +254,23 @@
 </div>
 <!-- End Content-->
 
+@endsection
+@section('page_js')
+<script>
+function addRow() {
+    var table = document.getElementById("dynamicTable");
+    var row = table.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    cell1.innerHTML = '<input type="text" name="unitqty[]">';
+    cell2.innerHTML = '<select name="units[]"><option>Select</option><option>Option 1</option><option>Option 2</option></select>';
+    cell3.innerHTML = '<button type="button" onclick="removeRow(this)">حذف</button>';
+}
+
+function removeRow(row) {
+    var i = row.parentNode.parentNode.rowIndex;
+    document.getElementById("dynamicTable").deleteRow(i);
+}
+</script>
 @endsection
