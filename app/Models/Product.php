@@ -64,7 +64,7 @@ class Product extends Model
     }
     public function saleUnits()
 {
-    return $this->belongsToMany(SaleUnit::class,'product_sale_unit');
+    return $this->belongsToMany(SaleUnit::class,'product_sale_unit')->withPivot('qty', 'price');
 }
 
 }
